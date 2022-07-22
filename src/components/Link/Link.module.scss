@@ -1,0 +1,31 @@
+.link {
+  display: block;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 121.5%;
+  text-align: center;
+  color: #FFFFFF;
+  text-decoration: none;
+
+  margin-right: 38px;
+
+  &:last-child{
+    margin-right: 0;
+  }
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.link-like-btn{
+  padding: 3px 25px;
+  border: 1px solid #FFFFFF;
+  border-radius: 15px;
+
+  &:hover{
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+  }
+}

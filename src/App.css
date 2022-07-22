@@ -14,3 +14,14 @@
   box-sizing: border-box;
 	font-family: 'Helvetica', sans-serif;
 }
+
+body{
+    color: #fff;
+    background-color: #000;
+    margin: 50px;
+}
+
+/*
+h2 span{
+    font-family: 'SpriteCoder', sans-serif;
+}*/
