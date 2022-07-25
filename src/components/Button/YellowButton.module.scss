@@ -1,0 +1,8 @@
+//@import "../../resourses/styles/style.scss";
+@import "src/resourses/styles/style.scss";
+.btn {
+  background-color: $yellow;
+  width: 400px;
+  color: #000;
+  border-color: $yellow;
+}
