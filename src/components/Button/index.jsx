@@ -1,16 +1,16 @@
 import React from 'react';
-import YellowButton from "./YellowButton";
-import BlackButton from "./BlackButton";
-import styles from './CustomButton.module.scss'
+import styles from './Button.module.scss'
+import stylesBlack from './BlackButton.module.scss'
+import stylesYellow from './YellowButton.module.scss'
 
-const CustomButton = ({children, isYellow}) => {
-    if(isYellow){
-        return <YellowButton btnStyles={styles.btn}>{children}</YellowButton>
-    }
+const Button = ({children, isYellow}) => {
 
     return (
-        <BlackButton btnStyles={styles.btn}>{children}</BlackButton>
+        <button
+            className={` ${ isYellow ? stylesYellow.btn : stylesBlack.btn } ${styles.btn}`}
+        >{children}</button>
+
     );
 };
 
-export default CustomButton;
+export default Button;

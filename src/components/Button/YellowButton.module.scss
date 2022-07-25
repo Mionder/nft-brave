@@ -4,5 +4,9 @@
   background-color: $yellow;
   width: 400px;
   color: #000;
-  border-color: $yellow;
+  border-color: $yellow !important;
+
+  &:hover{
+    border-color: #fff !important;
+  }
 }
