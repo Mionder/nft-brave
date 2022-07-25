@@ -1,0 +1,17 @@
+//COLORS--------------------------------
+$yellow: #CFFB03;
+
+//FONTS---------------------------------
+//font-family: 'Helvetica', sans-serif;
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../fonts/Helvetica.ttf');
+}
+//font-family: 'SpriteCoder', sans-serif;
+@font-face {
+  font-family: 'SpriteCoder';
+  src: url('../fonts/Spritecoder_Regular.ttf');
+}
+
+$font-normal: 'Helvetica', sans-serif;
+$font-dop: 'SpriteCoder', sans-serif;
