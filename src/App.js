@@ -9,8 +9,8 @@ function App() {
         <Typography titleNum='h1'>h1</Typography>
         <Typography titleNum='h1' isYellow={true}>h1 yellow</Typography>
         <Typography titleNum='h2'>h2</Typography>
-        <Typography titleNum='h2' h2Spec='collect'>h2 collect</Typography>
-        <Typography titleNum='h2' h2Spec='immerse'>h2 immerse</Typography>
+        <Typography titleNum='h2' h2Spec='collect'> <span>h2</span> collect</Typography>
+        <Typography titleNum='h2' h2Spec='immerse'><span>h2</span> immerse</Typography>
         <Typography titleNum='h3'>h3</Typography>
         <Typography titleNum='h3' isH3Card={true}>h3 card</Typography>
     </div>
