@@ -1,0 +1,11 @@
+@import 'src/resourses/styles/style.scss';
+
+.like-btn{
+  padding: 3px 25px;
+  border: 1px solid #FFFFFF;
+  border-radius: 15px;
+
+  &:hover{
+    border-color: $yellow;
+  }
+}

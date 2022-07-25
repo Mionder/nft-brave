@@ -1,0 +1,22 @@
+@import 'src/resourses/styles/style.scss';
+
+.link {
+  text-decoration: none;
+  font-family: $font-normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 121.5%;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  
+  &:hover {
+    color: $yellow;
+
+  }
+}
