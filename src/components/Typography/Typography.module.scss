@@ -1,5 +1,7 @@
 @import "src/resourses/styles/style.scss";
 
+
+
 .h1 {
   font-family: $font-normal;
   font-weight: 400;
@@ -8,9 +10,26 @@
   text-transform: uppercase;
   color: #FFFFFF;
   display: flex;
+
+  span{
+    color: $yellow;
+  }
 }
 
 .h2{
+  color: #fff;
+  font-size: 130px;
+  line-height: 86%;
+  font-weight: 400;
+  font-family: $font-normal;
+  text-transform: uppercase;
+
+  span{
+    color: $yellow;
+  }
+}
+
+.h3{
   font-family: $font-normal;
   color: $yellow;
   font-weight: 400;
@@ -22,13 +41,16 @@
     font-family: $font-dop;
   }
 }
+.h3-secondary {
+  color: #000;
+}
 
-.h3 {
+.h4 {
   font-family: $font-normal;
   font-weight: 400;
   font-size: 36px;
   line-height: 110%;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
   -webkit-transition: all .3s ease;
