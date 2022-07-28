@@ -1,13 +1,23 @@
 import './App.css';
-import styleVars from './resourses/styles/style.scss'
 import Typography from "./components/Typography";
 import './resourses/styles/style.scss'
 import Link from "./components/Link";
 import Image from "./components/Image";
 import imgMock from './resourses/mocks/chevron-1.png'
+import getBrigades from "./hooks";
 import Button from "./components/Button";
+import React from "react";
 
-function App() {
+const App = () => {
+  const [data, setData] = React.useState([]);
+  React.useEffect(() => {
+    dataSetter();
+  }, [])
+
+  const dataSetter = async () => {
+    setData(await getBrigades());
+  }
+
 
   return (
     <div className="App">
@@ -27,6 +37,12 @@ function App() {
         <Typography titleNum='h4' >h4</Typography>
         <Button isYellow={true}>hui</Button>
         <Button isYellow={false}>hui</Button>
+
+      {data.map((item) => {
+        return (
+          <p style={{color: '#fff'}}>{item.name}</p>
+        )
+      })}
     </div>
   );
 }
