@@ -1,6 +1,7 @@
 //COLORS--------------------------------
 $yellow: #CFFB03;
 
+
 //FONTS---------------------------------
 //font-family: 'Helvetica', sans-serif;
 @font-face {
@@ -15,3 +16,9 @@ $yellow: #CFFB03;
 
 $font-normal: 'Helvetica', sans-serif;
 $font-dop: 'SpriteCoder', sans-serif;
+
+:export{
+  yellow: $yellow;
+  font-normal: $font-normal;
+  font-dop: $font-dop;
+}

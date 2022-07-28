@@ -1,0 +1,14 @@
+//@import "../../resourses/styles/style.scss";
+@import "src/resourses/styles/style.scss";
+
+.btn {
+  background-color: #000;
+  width: 460px;
+  color: #fff;
+  border-color: #fff;
+
+  &:hover{
+    color: #000;
+    border-color: #000;
+  }
+}
