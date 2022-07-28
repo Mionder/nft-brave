@@ -1,0 +1,61 @@
+@import "src/resourses/styles/style.scss";
+
+
+
+.h1 {
+  font-family: $font-normal;
+  font-weight: 400;
+  font-size: 170px;
+  line-height: 91%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  display: flex;
+
+  span{
+    color: $yellow;
+  }
+}
+
+.h2{
+  color: #fff;
+  font-size: 130px;
+  line-height: 86%;
+  font-weight: 400;
+  font-family: $font-normal;
+  text-transform: uppercase;
+
+  span{
+    color: $yellow;
+  }
+}
+
+.h3{
+  font-family: $font-normal;
+  color: $yellow;
+  font-weight: 400;
+  font-size: 82px;
+  line-height: 90%;
+  text-transform: uppercase;
+
+  span{
+    font-family: $font-dop;
+  }
+}
+.h3-secondary {
+  color: #000;
+}
+
+.h4 {
+  font-family: $font-normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 110%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
