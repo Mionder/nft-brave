@@ -1,9 +1,9 @@
 import './App.css';
 import Typography from "./components/Typography";
 import './resourses/styles/style.scss'
+import getBrigades from "./hooks";
 import Button from "./components/Button";
 import React from "react";
-import getBrigades from "./hooks";
 
 const App = () => {
   const [data, setData] = React.useState([]);
