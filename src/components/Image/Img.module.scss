@@ -1,11 +1,31 @@
 @import "src/resourses/styles/style.scss";
 
 .img-container {
-  //width: 100%;
+  width: 100%;
 
   img{
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+}
+
+.img-sm {
+  max-width: 72px;
+  height: 72px;
+}
+
+.img-md {
+  max-width: 468px;
+  height: 468px;
+}
+
+.img-lg {
+  max-width: 474px;
+  height: 474px;
+}
+
+.img-xl {
+  max-width: 787px;
+  height: 787px;
 }
