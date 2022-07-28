@@ -1,6 +1,8 @@
 import './App.css';
 import styleVars from './resourses/styles/style.scss'
 import Typography from "./components/Typography";
+import './resourses/styles/style.scss'
+import Button from "./components/Button";
 
 function App() {
 
@@ -14,6 +16,8 @@ function App() {
         <Typography titleNum='h3' color='primary'>h3</Typography>
         <Typography titleNum='h3' color='primary'> h3</Typography>
         <Typography titleNum='h4' >h4</Typography>
+        <Button isYellow={true}>hui</Button>
+        <Button isYellow={false}>hui</Button>
     </div>
   );
 }

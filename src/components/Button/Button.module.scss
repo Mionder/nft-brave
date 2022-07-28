@@ -1,0 +1,25 @@
+//@import "../../resourses/styles/style.scss";
+@import "src/resourses/styles/style.scss";
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 51px;
+  padding: 12.5px;
+  font-family: $font-normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 100%;
+  text-align: center;
+  border: 2px solid #FEFFF9;
+  
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  
+  &:hover{
+    background-color: #fff;
+  }
+}
