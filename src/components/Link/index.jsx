@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './Link.module.scss'
-import stylesBtn from './LinkLikeBtn.module.scss'
 
-const Link = ({children, isLikeBtn, href}) => {
+const Link = ({children, isBtn, href}) => {
     return (
         <a
             href={href}
-            className={`${styles.link} ${isLikeBtn ? stylesBtn['like-btn'] : ''}`}
+            className={`${styles.link} ${isBtn && styles['like-btn']}`}
         >{children}</a>
     );
 };

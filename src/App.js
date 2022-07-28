@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="App">
         Immerse yourself in the army life
-        <Link href='#' isLikeBtn={false}>OpenSea</Link>
-        <Link href='#' isLikeBtn={true}>Sign in</Link>
+        <Link href='#' isBtn={false}>OpenSea</Link>
+        <Link href='#' isBtn={true}>Sign in</Link>
     </div>
   );
 }
