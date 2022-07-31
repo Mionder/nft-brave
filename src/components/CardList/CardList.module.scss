@@ -1,0 +1,16 @@
+@import "src/resourses/styles/style.scss";
+
+.card-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-list-item {
+  flex: 0 0 calc(33.333% - 20px);
+  margin-right: 20px;
+  &:last-child{
+    margin-right: 0;
+  }
+}
