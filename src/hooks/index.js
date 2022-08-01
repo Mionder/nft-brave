@@ -8,4 +8,19 @@ const getBrigades = async () => {
     });
 }
 
-export default getBrigades;
+const emptyObjectBrigade = {
+  id: Math.random(),
+  name: '',
+  year: 1900,
+  kindOfTroops: '',
+  typeOfTroops: '',
+  awards: '',
+  motto: '',
+  trophies: '',
+  protector: '',
+  pet: '',
+  videoLink: '',
+  img: '',
+}
+
+export { getBrigades, emptyObjectBrigade };
