@@ -3,11 +3,11 @@ import styles from './Button.module.scss'
 import stylesBlack from './BlackButton.module.scss'
 import stylesYellow from './YellowButton.module.scss'
 
-const Button = ({children, isYellow}) => {
+const Button = ({children, isYellow=true, className}) => {
 
     return (
         <button
-            className={` ${ isYellow ? stylesYellow.btn : stylesBlack.btn } ${styles.btn}`}
+            className={`${className} ${ isYellow ? stylesYellow.btn : stylesBlack.btn } ${styles.btn}`}
         >{children}</button>
 
     );
