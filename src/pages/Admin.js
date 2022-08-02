@@ -4,12 +4,12 @@ import Image from "../components/Image";
 import { Accordion } from "@mui/material";
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CardList from "../components/CardList";
 import Typography from "../components/Typography";
+import AccordionList from "../components/AccordionList";
 
 const Admin = () => {
   const [data, setData] = React.useState([]);
@@ -54,6 +54,7 @@ const Admin = () => {
   return (
     <>
       <h1>Title</h1>
+      <AccordionList data={data}/>
 
       <div style={{marginBottom: 80}}>
         <Typography titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
