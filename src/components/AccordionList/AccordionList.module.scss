@@ -1,0 +1,111 @@
+@import "src/resourses/styles/style.scss";
+.accordion-container{
+  .accordion-item{
+    background-color: transparent;
+    box-shadow: unset;
+    &:before{
+      display: none;
+    }
+  }
+
+  .accordion-header {
+    cursor: pointer;
+    background-color: #000;
+    border: 2px solid #FFFFFF;
+    border-radius: 85px;
+    padding: 7px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: $font-normal;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+
+    &:hover{
+      background-color: #fff;
+
+      .accordion-title, .accordion-signature, .accordion-collected, .accordion-icon-more {
+        color: #000;
+      }
+      .accordion-icon-more {
+        /*-webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);*/
+      }
+
+    }
+
+    //.accordion-header-content
+    &-content {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .accordion-img {
+    flex: 0 0 72px;
+    margin-right: 17px;
+  }
+
+  .accordion-title {
+
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin-right: 25px;
+    flex: 1 0 auto;
+  }
+
+  .accordion-signature {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 121.5%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-right: 30px;
+  }
+
+  .accordion-collected {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: $yellow;
+    margin-right: 40px;
+  }
+
+  .accordion-title, .accordion-signature, .accordion-collected, .accordion-icon-more {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+  }
+
+  .accordion-icon-more {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    color: #fff;
+
+    &.accordion-icon-more__collapsed {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+}
+

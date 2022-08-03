@@ -54,7 +54,7 @@ const Admin = () => {
   return (
     <>
       <h1>Title</h1>
-      <AccordionList data={data}/>
+      <AccordionList data={data} totalSum='20000'/>
 
       <div style={{marginBottom: 80}}>
         <Typography titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
