@@ -4,7 +4,6 @@ import Image from "../components/Image";
 import { Accordion } from "@mui/material";
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -76,7 +75,7 @@ const Admin = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Create new NFT</Typography>
+          <p>Create new NFT</p>
         </AccordionSummary>
         <AccordionDetails>
           <TextField
