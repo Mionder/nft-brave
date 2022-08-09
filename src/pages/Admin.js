@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CardList from "../components/CardList";
 import Typography from "../components/Typography";
+import AccordionList from "../components/AccordionList";
 
 const Admin = () => {
   const [data, setData] = React.useState([]);
@@ -53,6 +54,11 @@ const Admin = () => {
   return (
     <>
       <h1>Title</h1>
+
+      <div style={{background: '#000'}}>
+        <AccordionList data={data} totalSum='20000'/>
+      </div>
+
 
       <div style={{marginBottom: 80}}>
         <Typography titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
