@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
-import AccordionItem from "../AccordionItem";
 import styles from "./AccordionList.module.scss";
 import Image from "../Image";
 import {Accordion, AccordionDetails, Typography} from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
-//import iconMore from 'src/resourses/mocks/label-accordion-more.svg'
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ReactPlayer from "react-player";
 
@@ -18,7 +15,7 @@ const AccordionList = ({data, totalSum}) => {
     }
 
     const accordionCollapseHandler = (panel) => (event, newExpanded) => {
-        console.log(expanded)
+        //console.log(expanded)
         playingHandler({[panel]: false})
         setExpanded(newExpanded ? panel : false)
 
@@ -57,6 +54,12 @@ const AccordionList = ({data, totalSum}) => {
                                         light={true}
                                         width='100%'
                                         height='100%'
+                                        playIcon={
+                                            <svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="43" cy="43" r="42" stroke="white" strokeWidth="2"/>
+                                                <path d="M63.6035 43.448L33.3692 60.9038L33.3692 25.9922L63.6035 43.448Z" fill="white"/>
+                                            </svg>
+                                        }
                                     />
 
                                 </div>
