@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CardList from "../components/CardList";
 import Typography from "../components/Typography";
 import AccordionList from "../components/AccordionList";
+import configAdminCards from '../resourses/configs/configAdminCards.js'
 
 const Admin = () => {
   const [data, setData] = React.useState([]);
@@ -79,6 +80,11 @@ const Admin = () => {
       <div style={{marginBottom: 80}}>
         <Typography titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
         <CardList data={data}/>
+      </div>
+
+      <div style={{marginBottom: 80}}>
+        <Typography titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
+        <CardList data={configAdminCards} addStyles={true}/>
       </div>
 
 
