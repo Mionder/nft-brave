@@ -12,6 +12,8 @@ import Typography from "../components/Typography";
 
 const Admin = () => {
   const [data, setData] = React.useState([]);
+  const [order, setOrder] = React.useState(0);
+  const [myEmail, setEmail] = React.useState('');
   const [brigade, setBrigade] = React.useState(emptyObjectBrigade);
   React.useEffect(() => {
     dataSetter();
@@ -50,6 +52,20 @@ const Admin = () => {
     })();
   }
 
+  const Register = async () => {
+    console.log(1111);
+    await fetch(`http://localhost:3000/registration`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body:  JSON.stringify({email: myEmail})
+    })
+      .then(async (res) =>{ console.log("Success")})
+      .catch((err) => { console.log(err) })
+  }
+
   return (
     <>
       <h1>Title</h1>
@@ -66,9 +82,26 @@ const Admin = () => {
             <Image size={'img-sm'} src={item.img} alt={item.name} />
             <p>{item.name}</p>
             <DeleteIcon onClick={() => deleteBrigadeNft(item._id)} />
+            <TextField
+              id="outlined-basic"
+              value={item.order}
+              onChange={(e) => setOrder(+e.target.value)}
+              label="Order"
+              variant="outlined"
+              type="number"
+            />
           </div>
         )
       })}
+      <TextField
+        id="outlined-basic"
+        value={myEmail}
+        onChange={(e) => setEmail(e.target.value)}
+        margin="normal"
+        type="text"
+        label="Email"
+        variant="outlined" />
+      <button onClick={() => Register()}>Test</button>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
