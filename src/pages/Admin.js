@@ -10,6 +10,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CardList from "../components/CardList";
 import Typography from "../components/Typography";
 import AccordionList from "../components/AccordionList";
+import configAdminCards from '../resourses/configs/configAdminCards.js'
+import {Link} from "react-router-dom";
+import Card from "../components/Card";
+import style from "../components/CardList/CardList.module.scss";
+import styleCardAdmin from '../components/Card/Card.module.scss'
 
 const Admin = () => {
   const [data, setData] = React.useState([]);
@@ -65,6 +70,18 @@ const Admin = () => {
       <div style={{marginBottom: 80}}>
         <Typography titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
         <CardList data={data}/>
+      </div>
+
+      <div style={{marginBottom: 80}} className={style['card-list']}>
+
+        {configAdminCards.map(item => {
+          return(
+              <Link key={item['_id']} to={'/'}>
+                <Card key={item['_id']} className={`${style['card-list-item']} ${styleCardAdmin['card-admin']}`} src={item.img} title={item.name}/>
+              </Link>
+          )
+        })}
+
       </div>
 
 
