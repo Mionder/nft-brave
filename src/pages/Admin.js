@@ -14,7 +14,6 @@ import AccordionList from "../components/AccordionList";
 const Admin = () => {
   const [data, setData] = React.useState([]);
   const [order, setOrder] = React.useState(0);
-  const [myEmail, setEmail] = React.useState('');
   const [brigade, setBrigade] = React.useState(emptyObjectBrigade);
   React.useEffect(() => {
     dataSetter();
@@ -53,19 +52,6 @@ const Admin = () => {
     })();
   }
 
-  const Register = async () => {
-    console.log(1111);
-    await fetch(`http://localhost:3000/registration`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body:  JSON.stringify({email: myEmail})
-    })
-      .then(async (res) =>{ console.log("Success")})
-      .catch((err) => { console.log(err) })
-  }
 
   return (
     <>
@@ -99,15 +85,7 @@ const Admin = () => {
           </div>
         )
       })}
-      <TextField
-        id="outlined-basic"
-        value={myEmail}
-        onChange={(e) => setEmail(e.target.value)}
-        margin="normal"
-        type="text"
-        label="Email"
-        variant="outlined" />
-      <button onClick={() => Register()}>Test</button>
+
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
