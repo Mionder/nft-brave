@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   &.card-admin {
     text-decoration: none;
     position: relative;
@@ -21,18 +21,20 @@
       cursor: pointer;
       text-decoration: none;
       color: #000;
+
     }
     .card-btn {
       display: none;
     }
   }
 
-  //.card-image 
+
+  //.card-image
   &-image {
     margin-bottom: 6px;
   }
 
-  //.card-title 
+  //.card-title
   &-title {
     cursor: default;
     font-weight: 400;
@@ -43,9 +45,10 @@
     color: #FFFFFF;
     font-family: $font-normal;
     margin-bottom: 5px;
+    flex-grow: 1;
   }
 
-  //.card-btn 
+  //.card-btn
   &-btn {
     margin: 0 auto;
     -webkit-transform: translate(0, 50%);
