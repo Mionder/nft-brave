@@ -5,6 +5,7 @@ import React from "react";
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import Login from "./pages/Login";
+import Header from "./components/Header";
 import Success from "./pages/Success";
 import SuccessRedirect from "./pages/SuccessRedirect";
 import Error404 from "./pages/Error";
@@ -13,6 +14,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/admin" element={<Admin />} exact />
