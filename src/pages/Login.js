@@ -4,32 +4,31 @@ import { Button } from "@mui/material";
 
 const Login = () => {
   const [myEmail, setEmail] = React.useState('');
-  const Register = async () => {
-    console.log(1111);
-    await fetch(`http://localhost:3000/registration`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body:  JSON.stringify({email: myEmail, token: token()})
-    })
-      .then(async (res) =>{
-        console.log(res);
-        await addUser();
-      })
-      .catch((err) => { console.log(err) })
-  }
+
   const addUser = async () => {
+    const localToken = token();
     await fetch('http://localhost:3000/users', {
       method: 'POST',
       mode: "cors",
       headers: {
         'Content-Type': 'application/json'
       },
-      body:  JSON.stringify({email: myEmail, token: token(), isExpired: false})
+      body:  JSON.stringify({email: myEmail, token: localToken, isExpired: false})
     }).then(async (res) => {
-      console.log(res);
+
+      await fetch(`http://localhost:3000/registration`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:  JSON.stringify({email: myEmail, token: localToken})
+      })
+        .then(async (res) =>{
+          console.log(res);
+          await addUser();
+        })
+        .catch((err) => { console.log(err) })
     }).catch((err) => { console.log(err) })
   }
 
@@ -51,7 +50,7 @@ const Login = () => {
         type="text"
         label="Email"
         variant="outlined" />
-      <button onClick={() => Register()}>Test</button>
+      <button onClick={() => addUser()}>Test</button>
       {/*<Button variant="outlined" onClick={() => Register}>Login</Button>*/}
     </>
   )

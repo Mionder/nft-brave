@@ -6,6 +6,9 @@ import Home from './pages/Home';
 import Admin from './pages/Admin';
 import Login from "./pages/Login";
 import Header from "./components/Header";
+import Success from "./pages/Success";
+import SuccessRedirect from "./pages/SuccessRedirect";
+import Error404 from "./pages/Error";
 
 const App = () => {
 
@@ -16,6 +19,9 @@ const App = () => {
         <Route path="/" element={<Home />} exact />
         <Route path="/admin" element={<Admin />} exact />
         <Route path="/login" element={<Login />} exact/>
+        <Route path="/login/:token" element={<SuccessRedirect />} exact/>
+        <Route path="/success" element={<Success />} exact/>
+        <Route path="/404" element={<Error404 />} exact/>
       </Routes>
     </div>
   );
