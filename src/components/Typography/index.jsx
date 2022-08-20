@@ -3,12 +3,12 @@ import styleVars from '../../resourses/styles/style.scss'
 import stylesTypography from './Typography.module.scss'
 
 
-const Typography = ({children, titleNum, color= 'primary' }) => {
+const Typography = ({children, titleNum, color= 'primary', textAlign='left' }) => {
 
     if(titleNum === 'h1'){
         return (
             <h1
-                className={`${stylesTypography.h1}`}
+                className={`${stylesTypography.h1} ${color === 'yellow' && stylesTypography['h1-yellow']} ${textAlign === 'right' && stylesTypography['h1-right']}`}
             >
                 {children}
             </h1>
