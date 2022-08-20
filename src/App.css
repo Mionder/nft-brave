@@ -42,6 +42,17 @@ header {
     align-items: center;
 }
 
+#reddit-input {
+    padding: 16px;
+}
+
+.header-btn {
+    width: auto !important;
+    height: auto !important;
+    padding: 3px 25px !important;
+    font-size: 20px !important;
+}
+
 @media screen and (max-width: 1720px) {
     .container {
         padding: 0 5%;
