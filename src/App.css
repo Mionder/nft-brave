@@ -116,6 +116,36 @@ header {
     max-width: 1000px;
     width: 100%;
 }
+.collect {
+    margin: 100px 0 200px;
+}
+
+.collect-text {
+    max-width: 260px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 26px;
+    display: inline-block;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    transform: translateX(-25%);
+}
+.collect-wrapper {
+    position: relative;
+}
+
+.collect-top-title {
+    position: absolute !important;
+    top: 20%;
+}
+
+.collect-bottom-title {
+    position: absolute !important;
+    bottom: 20%;
+}
 
 @media screen and (max-width: 1720px) {
     .container {

@@ -6,9 +6,11 @@ import { Box, Modal } from "@mui/material";
 
 const MainSection = () => {
   const [isPlay, setIsPlay] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const handlePlay = () => {
     setIsPlay(true);
+    setIsOpen(true);
   }
   const handlePause = () => {
     setIsPlay(false);
@@ -60,8 +62,8 @@ const MainSection = () => {
         </div>
 
         <Modal
-          open={isPlay}
-          onClose={() => handlePause()}
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
@@ -73,6 +75,7 @@ const MainSection = () => {
               onPause={() => handlePause()}
               playing={isPlay}
               light={true}
+              controls
               width='90%'
               height='100%'
               style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)'}}
