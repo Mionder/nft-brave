@@ -9,11 +9,26 @@
   line-height: 91%;
   text-transform: uppercase;
   color: #FFFFFF;
-  display: flex;
+  display: block;
+  position: relative;
 
   span{
-    color: $yellow;
+    max-width: 195px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 26px;
+    display: inline-block;
   }
+}
+.h1-yellow {
+  color: $yellow;
+}
+
+.h1-right {
+  text-align: right;
+}
+.h1-center {
+  text-align: right;
 }
 
 .h2{
