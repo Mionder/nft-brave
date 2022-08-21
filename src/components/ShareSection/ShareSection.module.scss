@@ -1,0 +1,59 @@
+@import 'src/resourses/styles/style.scss';
+
+.share-section {
+  margin-bottom: 130px;
+
+  //.share-section-wrapper
+  &-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  //.share-section-img-bg
+  &-img-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+
+    max-width: 240px;
+    width: 100%;
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  //.share-section-title-container
+  &-title-container {
+    margin-bottom: 78px;
+
+    .share-section-title {
+      max-width: 90%;
+      width: 100%;
+
+      &:first-child{
+        margin-bottom: 235px;
+      }
+      &:last-child{
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+
+  //.share-section-btn
+  &-btn {
+    max-width: 522px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
