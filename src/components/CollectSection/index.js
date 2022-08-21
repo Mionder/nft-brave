@@ -12,7 +12,7 @@ const CollectSection = () => {
           <ReactPlayer
             url={Video}
             playing={true}
-            style={{display: "flex", justifyContent: "center", margin: "auto"}}
+            style={{display: "flex", justifyContent: "center", margin: "auto", boxShadow:'0px 0px 72px 8px #0f0f0f, 0px 0px 38px 23px #0f0f0f inset'}}
             muted
             loop
             width='900px'
