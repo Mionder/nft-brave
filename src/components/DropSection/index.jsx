@@ -2,18 +2,9 @@ import React from 'react';
 import styles from './DropSection.module.scss'
 import Typography from "../Typography";
 import CardList from "../CardList";
-import {getBrigades} from "../../hooks";
 
-const DropSection = () => {
-    const [data, setData] = React.useState([]);
+const DropSection = ({data}) => {
 
-    const dataSetter = async () => {
-        setData(await getBrigades());
-    }
-
-    React.useEffect(() => {
-        dataSetter();
-    }, [])
 
     return (
         <section className={styles['drop-section']}>
