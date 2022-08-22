@@ -55,10 +55,10 @@ const Footer = () => {
                     </div>
 
                     <div className={styles['footer-copyrights']}>
-                        <NavLink to='/privacy' className={styles['footer-copyrights__item']}>
+                        <NavLink to='/' className={styles['footer-copyrights__item']}>
                             Privacy policy
                         </NavLink>
-                        <NavLink to='/terms' className={styles['footer-copyrights__item']}>
+                        <NavLink to='/' className={styles['footer-copyrights__item']}>
                             Terms of use
                         </NavLink>
                         <p className={styles['footer-copyrights__item']}>
