@@ -94,9 +94,22 @@
       text-transform: capitalize;
       color: #FFFFFF;
       margin-right: 20px;
+      text-decoration: none;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease;
+
+      &:hover{
+        color: $yellow;
+      }
 
       &:last-child{
         margin-right: 0;
+        &:hover{
+          color: #fff;
+        }
       }
     }
   }
