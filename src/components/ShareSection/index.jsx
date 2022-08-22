@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './ShareSection.module.scss'
 import imgBg from '../../resourses/mocks/img-share-bg.png'
 import Typography from "../Typography";
 import Button from "../Button";
+import {Alert} from "@mui/material";
 
 const ShareSection = () => {
+    const [alertVisible, setAlertVisible] = useState(false)
+
+    const ShareBtnHandler = () => {
+        navigator.clipboard.writeText("Maksim Mykal top 1 Grimstroke in the world");
+
+        setAlertVisible(true)
+        setTimeout(()=>{
+            setAlertVisible(false)
+        }, 2000)
+    }
+
+
     return (
         <section className={styles['share-section']}>
             <div className="container">
@@ -23,8 +36,8 @@ const ShareSection = () => {
                         </Typography>
                     </div>
 
-
-                    <Button className={styles['share-section-btn']} isYellow={false}>Share the project</Button>
+                    <Alert className={`${styles['share-alert']} ${alertVisible && styles['share-alert__visible']}`} severity='info'>Link was copied in your clipboard</Alert>
+                    <Button onClick={ShareBtnHandler} className={styles['share-section-btn']} isYellow={false}>Share the project</Button>
                 </div>
             </div>
         </section>
