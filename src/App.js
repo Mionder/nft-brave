@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Success from "./pages/Success";
 import SuccessRedirect from "./pages/SuccessRedirect";
 import Error404 from "./pages/Error";
+import Footer from "./components/Footer";
 
 const App = () => {
 
@@ -23,6 +24,8 @@ const App = () => {
         <Route path="/success" element={<Success />} exact/>
         <Route path="/404" element={<Error404 />} exact/>
       </Routes>
+
+      <Footer/>
     </div>
   );
 }
