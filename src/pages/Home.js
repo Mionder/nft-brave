@@ -2,6 +2,7 @@ import React from 'react';
 import MainSection from "../components/MainSection";
 import Community from "../components/Community";
 import CollectSection from "../components/CollectSection";
+import ShareSection from "../components/ShareSection";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
        <MainSection />
       <CollectSection />
        <Community />
+        <ShareSection />
     </>
   )
 }
