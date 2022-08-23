@@ -18,7 +18,7 @@ const Typography = ({children, titleNum, color= 'primary', textAlign='left', cla
 
         return (
             <h2
-                className={`${stylesTypography.h2} ${className} ${textAlign === 'right' && stylesTypography['h1-right']}`}
+                className={`${stylesTypography.h2} ${className} ${color === 'yellow' && stylesTypography['h2-yellow']} ${textAlign === 'right' && stylesTypography['h1-right']}`}
             >
                 {children}
             </h2>
