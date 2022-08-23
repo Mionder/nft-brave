@@ -29,7 +29,7 @@ const Typography = ({children, titleNum, color= 'primary', textAlign='left', cla
 
         return (
             <h3
-                className={`${stylesTypography.h3} ${color === 'secondary' && stylesTypography['h3-secondary']}`}
+                className={`${stylesTypography.h3} ${className} ${color === 'secondary' && stylesTypography['h3-secondary']}`}
             >
                 {children}
             </h3>
@@ -39,7 +39,7 @@ const Typography = ({children, titleNum, color= 'primary', textAlign='left', cla
 
         return(
             <h4
-                className={`${stylesTypography.h4}`}
+                className={`${stylesTypography.h4} ${className}`}
             >
                 {children}
             </h4>

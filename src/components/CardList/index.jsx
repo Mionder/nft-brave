@@ -3,10 +3,10 @@ import style from './CardList.module.scss'
 import Card from "../Card";
 
 
-const CardList = ({data, btnTitle}) => {
+const CardList = ({data, btnTitle, className}) => {
 
     return (
-        <div className={style['card-list']}>
+        <div className={`${style['card-list']} ${className}`}>
             {data.map((item,index) => {
                 if(index > 2) return
 

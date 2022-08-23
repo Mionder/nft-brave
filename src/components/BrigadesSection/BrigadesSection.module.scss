@@ -1,0 +1,35 @@
+@import "src/resourses/styles/style.scss";
+
+.brigades-section {
+  margin-bottom: 220px;
+  //.brigades-section__wrapper
+  &__wrapper {
+
+  }
+
+  //.section__title__container
+  &__title__container {
+    margin-bottom: 95px;
+    display: flex;
+    align-items: flex-end;
+  }
+  //.brigades-section__title
+  &__title {
+    flex: 0 0 calc(66.62% - 20px);
+    margin-right: 20px;
+  }
+  //.brigades-section__subtitle
+  &__subtitle {
+    font-family: $font-normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  //.brigades-section__list
+  &__list {
+
+  }
+}
