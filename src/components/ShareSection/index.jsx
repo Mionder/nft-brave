@@ -9,7 +9,7 @@ const ShareSection = () => {
     const [alertVisible, setAlertVisible] = useState(false)
 
     const ShareBtnHandler = () => {
-        navigator.clipboard.writeText("Maksim Mykal top 1 Grimstroke in the world");
+        navigator.clipboard.writeText("http://openarmy.org/");
 
         setAlertVisible(true)
         setTimeout(()=>{
