@@ -2,6 +2,9 @@
 
 .drop-section {
   padding: 50px 0;
+  @media(max-width: 475px) {
+    padding: 0;
+  }
   //.drop-section__wrapper
   &__wrapper {
 
@@ -10,6 +13,10 @@
   //.drop-section__title
   &__title {
     margin-bottom: 72px;
+    @media(max-width: 475px) {
+      margin-bottom: 35px;
+      font-size: 33px;
+    }
   }
 
   //.drop-section__list

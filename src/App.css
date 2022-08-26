@@ -189,6 +189,15 @@ header {
         transform: none;
         margin: 5px auto;
     }
+    .community-wrapper {
+        padding: 20px 30px;
+    }
+    .community-text {
+        font-size: 18px;
+    }
+    .community {
+        margin: 90px 0 85px;
+    }
 }
 
 @media screen and (max-width: 424px) {

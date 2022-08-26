@@ -62,6 +62,12 @@
       color: #FFFFFF;
       margin-right: 25px;
       flex: 1 0 auto;
+      @media (max-width: 768px) {
+        font-size: 24px;
+      }
+      @media(max-width: 475px) {
+        font-size: 18px;
+      }
     }
 
     .accordion-signature {

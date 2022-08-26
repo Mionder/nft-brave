@@ -8,6 +8,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media(max-width: 1420px) {
+    margin-bottom: 40px;
+    max-width: 100%;
+    width: 100%;
+  }
+  @media(max-width: 475px) {
+    padding: 5px 16px;
+  }
 
   &.card-admin {
     text-decoration: none;
@@ -46,6 +54,9 @@
     font-family: $font-normal;
     margin-bottom: 5px;
     flex-grow: 1;
+    @media(max-width: 475px) {
+      font-size: 24px;
+    }
   }
 
   //.card-btn

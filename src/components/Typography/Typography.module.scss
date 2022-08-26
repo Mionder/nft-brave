@@ -84,6 +84,12 @@
   font-size: 82px;
   line-height: 90%;
   text-transform: uppercase;
+  @media(max-width: 768px) {
+    font-size: 40px;
+  }
+  @media(max-width: 475px) {
+    font-size: 29px;
+  }
 
   span{
     font-family: $font-dop;
