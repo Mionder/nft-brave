@@ -11,6 +11,15 @@
   color: #FFFFFF;
   display: block;
   position: relative;
+  @media(max-width: 1200px) {
+    font-size: 120px;
+  }
+  @media(max-width: 768px) {
+    font-size: 84px;
+  }
+  @media (max-width: 424px) {
+    font-size: 59px;
+  }
 
   span{
     max-width: 195px;
@@ -18,6 +27,21 @@
     font-size: 20px;
     line-height: 26px;
     display: inline-block;
+    @media(max-width: 1200px) {
+      font-size: 16px;
+      line-height: 105%;
+    }
+    @media(max-width: 768px) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 7px;
+      font-size: 14px;
+    }
+    @media(max-width: 424px) {
+      font-size: 11px;
+      max-width: 140px;
+    }
   }
 }
 .h1-yellow {
@@ -26,9 +50,15 @@
 
 .h1-right {
   text-align: right;
+  @media(max-width: 424px) {
+    text-align: left;
+  }
 }
 .h1-center {
   text-align: right;
+  @media(max-width: 424px) {
+    text-align: left;
+  }
 }
 
 .h2{
