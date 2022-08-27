@@ -104,7 +104,7 @@ const Header = () => {
               Enter your email to receive the magic link to access your account!
               If you don’t have an account we’ll create it for you automatically.
             </Typography>
-            <Box style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: '30px'}}>
+            <div className="sign-in-wrapper" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: '30px'}}>
               <RedditTextField
                 id="reddit-input"
                 variant="filled"
@@ -112,7 +112,7 @@ const Header = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Button className="card-btn" onClick={() => addUser()}>Sign in</Button>
-            </Box>
+            </div>
             <CloseIcon onClick={() => setIsOpen(false)} fontSize="large" sx={{ color: '#FFF' }} style={{position: 'absolute', cursor: 'pointer', top: '16px', right: '36px'}} />
           </Box>
         </Modal>

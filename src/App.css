@@ -165,8 +165,51 @@ header {
         max-width: 45%;
     }
 }
+@media(max-width: 1100px) {
+    .MuiBox-root {
+        max-width: 1100px;
+        width: 90% !important;
+        padding: 40px 30px !important;
+    }
+    .sign-in-wrapper {
+        flex-direction: column !important;
+    }
+    .sign-in-wrapper div {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .card-btn {
+        width: 100% !important;
+    }
+}
+
+@media(max-width: 992px) {
+    .collect-top-title,
+    .collect-bottom-title{
+        font-size: 100px !important;
+    }
+    .collect-video div {
+        max-width: 992px;
+        width: 100% !important;
+        height: auto !important;
+    }
+}
 
 @media screen and (max-width: 768px) {
+    #modal-modal-description {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    #modal-modal-title {
+        font-size: 24px;
+    }
+    .collect-top-title,
+    .collect-bottom-title{
+        font-size: 70px !important;
+    }
+    .collect-text {
+        font-size: 14px;
+    }
     .navigation {
         max-width: 70%;
         margin-left: 32px;
@@ -198,9 +241,44 @@ header {
     .community {
         margin: 90px 0 85px;
     }
+    .collect {
+        margin: 100px 0;
+    }
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 475px) {
+    .MuiBox-root {
+        width: 95% !important;
+        border-radius: 20px !important;
+    }
+    #modal-modal-description {
+        font-size: 15px;
+    }
+    #reddit-input {
+        padding: 5px !important;
+    }
+    .collect {
+        margin: 84px 0;
+    }
+    .collect-top-title,
+    .collect-bottom-title{
+        font-size: 30px !important;
+    }
+    .collect-top-title {
+        top: 25% !important;
+    }
+    .collect-bottom-title {
+        text-align: right !important;
+        max-width: 225px;
+        right: 0;
+        bottom: 25% !important;
+    }
+    .collect-text {
+        font-size: 11px;
+        line-height: 105%;
+        max-width: 120px;
+        right: 0;
+    }
     .logo, .logo img {
         max-width: 112px;
         width: 100%;

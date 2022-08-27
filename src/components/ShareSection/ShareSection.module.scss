@@ -2,6 +2,9 @@
 
 .share-section {
   margin-bottom: 130px;
+  @media(max-width: 768px) {
+    margin-bottom: 68px;
+  }
 
   //.share-section-wrapper
   &-wrapper {
@@ -22,6 +25,12 @@
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: -1;
+    @media(max-width: 475px) {
+      max-width: 132px;
+      width: 100%;
+      height: auto;
+      top: 43%;
+    }
 
     max-width: 240px;
     width: 100%;
@@ -35,6 +44,9 @@
   //.share-section-title-container
   &-title-container {
     margin-bottom: 78px;
+    @media(max-width: 475px) {
+      margin-bottom: 40px;
+    }
 
     .share-section-title {
       max-width: 90%;
@@ -42,10 +54,19 @@
 
       &:first-child{
         margin-bottom: 235px;
+        @media(max-width: 475px) {
+          margin-bottom: 0;
+        }
       }
       &:last-child{
         margin-right: 0;
         margin-left: auto;
+        @media(max-width: 475px) {
+          margin-left: 0;
+          float: right;
+          max-width: 300px;
+          margin-top: 140px;
+        }
       }
     }
   }
