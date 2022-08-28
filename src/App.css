@@ -227,8 +227,7 @@ header {
     }
     .video-main_mobile {
         display: flex;
-        position: relative;
-        top: auto;
+        position: initial;
         transform: none;
         margin: 5px auto;
     }
@@ -247,6 +246,15 @@ header {
 }
 
 @media screen and (max-width: 475px) {
+    .concated-titles {
+        display: none;
+    }
+    .mobile-titles {
+        display: block;
+    }
+    .title-left_mobile {
+        text-align: left !important;
+    }
     .MuiBox-root {
         width: 95% !important;
         border-radius: 20px !important;

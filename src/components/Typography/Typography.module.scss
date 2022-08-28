@@ -17,7 +17,7 @@
   @media(max-width: 768px) {
     font-size: 84px;
   }
-  @media (max-width: 424px) {
+  @media (max-width: 475px) {
     font-size: 59px;
   }
 
@@ -50,15 +50,15 @@
 
 .h1-right {
   text-align: right;
-  @media(max-width: 424px) {
-    text-align: left;
-  }
+  //@media(max-width: 424px) {
+  //  text-align: left;
+  //}
 }
 .h1-center {
   text-align: right;
-  @media(max-width: 424px) {
-    text-align: left;
-  }
+  //@media(max-width: 424px) {
+  //  text-align: left;
+  //}
 }
 
 .h2{

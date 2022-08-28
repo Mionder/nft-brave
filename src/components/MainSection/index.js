@@ -35,20 +35,28 @@ const MainSection = () => {
         <div style={{marginLeft: '12%'}}>
           <Typography titleNum="h1">Help<span>Become a part of the Ukrainian Army at a safe distance from bullets</span></Typography>
         </div>
-        <Typography titleNum="h1" textAlign="right">
+        <Typography className="title-left_mobile" titleNum="h1" textAlign="right">
           Ukrainians
         </Typography>
 
-        <Typography titleNum="h1" color="yellow">
-          in the fight
-          <div onClick={() => handlePlay()} className="video-main">
-            <svg width="60" height="60" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="43" cy="43" r="42" stroke="white" strokeWidth="2"/>
-              <path d="M63.6035 43.448L33.3692 60.9038L33.3692 25.9922L63.6035 43.448Z" fill="white"/>
-            </svg>
-          </div>
-        </Typography>
-        <Typography titleNum="h1" textAlign="right" color="yellow" children="for freedom" />
+        <div className="concated-titles">
+          <Typography titleNum="h1" color="yellow">
+            in the fight
+            <div onClick={() => handlePlay()} className="video-main">
+              <svg width="60" height="60" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="43" cy="43" r="42" stroke="white" strokeWidth="2"/>
+                <path d="M63.6035 43.448L33.3692 60.9038L33.3692 25.9922L63.6035 43.448Z" fill="white"/>
+              </svg>
+            </div>
+          </Typography>
+          <Typography titleNum="h1" textAlign="right" color="yellow" children="for freedom" />
+        </div>
+        <div className="mobile-titles">
+          <Typography titleNum="h1" color="yellow" textAlign="right">
+            in the fight for freedom
+          </Typography>
+        </div>
+
 
         <div onClick={() => handlePlay()} className="video-main video-main_mobile">
           <svg width="60" height="60" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
