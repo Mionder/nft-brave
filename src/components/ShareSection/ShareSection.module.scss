@@ -93,6 +93,10 @@
     -ms-transition: bottom .3s ease, opacity .3s ease .2s;
     -o-transition: bottom .3s ease, opacity .3s ease .2s;
     transition: bottom .3s ease, opacity .3s ease .2s;
+    @media(max-width: 475px) {
+      font-size: 13px;
+      width: 80%;
+    }
 
     svg path {
       fill: #000;
