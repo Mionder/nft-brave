@@ -39,10 +39,14 @@ const AccordionList = ({data, totalSum, className}) => {
                             id={`accordion-header-${index}`}
                         >
                             <div className={styles['accordion-header-content']}>
-                                <Image src={item.img} alt={item.name} size='img-sm' className={styles['accordion-img']}/>
-                                <span className={styles['accordion-title']}>{item.name}</span>
-                                <span className={styles['accordion-signature']}>Total earned:</span>
-                                <span className={styles['accordion-collected']}>{`$ ${totalSum}`}</span>
+                                <div className={styles['accordion-summary_group']}>
+                                    <Image src={item.img} alt={item.name} size='img-sm' className={styles['accordion-img']}/>
+                                    <span className={styles['accordion-title']}>{item.name}</span>
+                                </div>
+                                <div className={styles['accordion-summary_group-details']}>
+                                    <span className={styles['accordion-signature']}>Total earned:</span>
+                                    <span className={styles['accordion-collected']}>{`$ ${totalSum}`}</span>
+                                </div>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -107,7 +111,7 @@ const AccordionList = ({data, totalSum, className}) => {
 
                                     </div>
                                     <p className={styles['accordion-detail-text']}>
-                                        {item.trophies}
+                                        {item.description}
                                     </p>
                                     <div className={styles['accordion-detail-socials']}>
                                         <Link href='#' className={styles['accordion-detail-socials__item']}>
