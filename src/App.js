@@ -19,7 +19,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/admin" element={<Admin />} exact />
-        <Route path="/login" element={<Login />} exact/>
         <Route path="/login/:token" element={<SuccessRedirect />} exact/>
         <Route path="/success" element={<Success />} exact/>
         <Route path="/404" element={<Error404 />} exact/>
