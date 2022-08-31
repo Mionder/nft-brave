@@ -7,9 +7,12 @@
       display: none;
     }
   }
-  .accordion-summary_group,
+  .accordion-summary_group {
+    display: flex;
+    align-items: center;
+  }
   .accordion-summary_group-details{
-    @media(max-width: 992px) {
+    @media(max-width: 1200px) {
       display: flex;
       align-items: center;
     }

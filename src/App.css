@@ -150,6 +150,39 @@ header {
 .video-main_mobile {
     display: none;
 }
+.error-404 {
+    height: calc(100vh - 50px - 150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper-error a {
+    color: #FFFFFF;
+    font-size: 24px;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 32px;
+    padding: 10px 30px;
+    margin: auto;
+    max-width: 25%;
+    display: block;
+    transition: .4s;
+}
+.wrapper-error a:hover {
+    background: #FFFFFF;
+    color: #000000;
+    transition: .4s;
+}
+.wrapper-error h4 {
+    font-size: 72px;
+    color: #FFFFFF;
+    line-height: 120%;
+    text-align: center !important;
+    font-family: "SpriteCoder", sans-serif;
+    margin-bottom: 32px;
+}
 
 @media screen and (max-width: 1636px) {
     .container {
@@ -181,9 +214,16 @@ header {
     .card-btn {
         width: 100% !important;
     }
+    .wrapper-error a {
+        max-width: 50%;
+    }
 }
 
 @media(max-width: 992px) {
+    .wrapper-error h4 {
+        font-size: 64px;
+        line-height: 105%;
+    }
     .collect-top-title,
     .collect-bottom-title{
         font-size: 100px !important;
@@ -196,6 +236,12 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+    .wrapper-error h4 {
+        font-size: 48px;
+    }
+    .wrapper-error a {
+        font-size: 20px;
+    }
     #modal-modal-description {
         font-size: 18px;
         margin-top: 20px;
@@ -246,6 +292,9 @@ header {
 }
 
 @media screen and (max-width: 475px) {
+    .wrapper-error h4 {
+        font-size: 32px;
+    }
     .concated-titles {
         display: none;
     }
@@ -319,5 +368,10 @@ header {
     }
     .participation-wrapper {
         justify-content: space-between;
+    }
+}
+@media screen and (max-width: 425px) {
+    .wrapper-error a {
+        max-width: 70%;
     }
 }

@@ -95,35 +95,26 @@ const Admin = () => {
 
     return (
         <>
-            <h1>Title</h1>
-
-            <div style={{background: '#000'}}>
-                <AccordionList data={data} totalSum='20000'/>
-            </div>
 
 
-            <div style={{marginBottom: 80}}>
-                <Typography titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
-                <CardList data={data}/>
-            </div>
             <div style={{marginBottom: 80}}>
                 <Typography titleNum='h3' color='primary'> ranks </Typography>
                 <CardList data={RanksConfig} btnTitle='Upgrade'/>
             </div>
 
-            <div style={{marginBottom: 80}} className={style['card-list']}>
+            {/*<div style={{marginBottom: 80}} className={style['card-list']}>*/}
 
-                {configAdminCards.map(item => {
-                    return (
-                        <Link key={item['_id']} to={'/'}>
-                            <Card key={item['_id']}
-                                  className={`${style['card-list-item']} ${styleCardAdmin['card-admin']}`}
-                                  src={item.img} title={item.name}/>
-                        </Link>
-                    )
-                })}
+            {/*    {configAdminCards.map(item => {*/}
+            {/*        return (*/}
+            {/*            <Link key={item['_id']} to={'/'}>*/}
+            {/*                <Card key={item['_id']}*/}
+            {/*                      className={`${style['card-list-item']} ${styleCardAdmin['card-admin']}`}*/}
+            {/*                      src={item.img} title={item.name}/>*/}
+            {/*            </Link>*/}
+            {/*        )*/}
+            {/*    })}*/}
 
-            </div>
+            {/*</div>*/}
 
 
             {data.map((item) => {
