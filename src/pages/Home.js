@@ -6,6 +6,7 @@ import DropSection from "../components/DropSection";
 import {getBrigades} from "../hooks";
 import BrigadesSection from "../components/BrigadesSection";
 import ShareSection from "../components/ShareSection";
+import RanksSection from "../components/RanksSection";
 
 const Home = () => {
     const [data, setData] = React.useState([]);
@@ -25,6 +26,7 @@ const Home = () => {
       <DropSection data={data}/>
       <Community />
       <BrigadesSection data={data}/>
+      <RanksSection />
       <ShareSection />
     </>
   )
