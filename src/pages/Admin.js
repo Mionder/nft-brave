@@ -23,7 +23,7 @@ import Video from "../resourses/mocks/Open_army_main_final.mp4";
 
 const Admin = () => {
     const [data, setData] = React.useState([emptyObjectBrigade]);
-    const [chevronList, setChevronList] = React.useState([]);
+    const [chevronList, setChevronList] = React.useState([emptyObjectChevron]);
     const [order, setOrder] = React.useState(0);
     const [brigade, setBrigade] = React.useState(emptyObjectBrigade);
     const [chevron, setChevron] = React.useState(emptyObjectChevron);

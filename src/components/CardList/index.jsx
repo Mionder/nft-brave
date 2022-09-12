@@ -11,7 +11,7 @@ const CardList = ({data, btnTitle, className}) => {
                 if(index > 2) return
 
                 return (
-                    <Card key={item['_id']} className={style['card-list-item']} src={item.img} title={item.name} btnTitle={btnTitle}/>
+                    <Card key={Math.random()} contentType='video' className={style['card-list-item']} src={item.video} title={item.name} btnTitle={btnTitle}/>
                 )
             })}
         </div>
