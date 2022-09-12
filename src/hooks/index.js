@@ -11,11 +11,11 @@ const getBrigades = async () => {
 const getChevrons = async () => {
     return await fetch('http://localhost:3000/nft')
         .then((response) => {
-            console.log(1, response)
+            //console.log(1, response)
             return response.json()
         })
         .then((data) => {
-            console.log(2, data)
+            //console.log(2, data)
             return data
         })
 }
