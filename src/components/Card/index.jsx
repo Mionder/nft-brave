@@ -19,7 +19,6 @@ const Card = ({className, src, title, contentType = 'img', btnTitle = 'Buy'}) =>
                 />
             }
 
-
             <p className={styles['card-title']}>{title}</p>
             <Button className={styles['card-btn']} isYellow={true}>{btnTitle}</Button>
         </div>
