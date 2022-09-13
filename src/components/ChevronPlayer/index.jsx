@@ -4,25 +4,35 @@ import styles from './index.module.scss';
 import login from "../../pages/Login";
 
 const ChevronPlayer = ({url, className, size}) => {
-    const [playableMob, setPlayableMob] = useState(false)
-    const p = useRef()
+    const playerRef = useRef(null)
 
-    const playableHandler = () => {
-        p.current.seekTo(0)
+    // const playableHandler = () => {
+    //     playerRef.current.seekTo(0)
+    //
+    // }
 
+    const progressVideo = () => {
+        const duration = playerRef.current.getDuration() * 1000;
+        console.log(1);
+        setTimeout(() => {
+            playerRef.current.seekTo(0);
+            progressVideo();
+        }, duration - 1000)
     }
 
     return (
         <ReactPlayer
-            ref={p}
+            ref={playerRef}
 
             className={`${className} ${styles.player} ${styles[size]}`}
             url={url}
             playing={true}
             muted
             //loop
+            onProgress={(state) => console.log(state)}
             controls={false}
-            onEnded = {playableHandler}
+            // onEnded = {playableHandler}
+            onStart={progressVideo}
             // onSeek={(seconds) => playableHandler}
         />
     );
