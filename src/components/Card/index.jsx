@@ -16,6 +16,7 @@ const Card = ({className, src, title, contentType = 'img', btnTitle = 'Buy'}) =>
                 <ChevronPlayer
                     url={src}
                     size='video-lg'
+
                 />
             }
 
