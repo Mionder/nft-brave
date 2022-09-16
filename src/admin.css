@@ -1,0 +1,43 @@
+.admin-brigade__card {
+  display: flex;
+  width: 48%;
+  margin-bottom: 24px;
+  border-radius: 24px;
+  padding: 24px;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+}
+
+.actions-admin {
+  display: flex;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.actions-admin svg {
+  cursor: pointer;
+}
+
+.actions-order {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.admin-title__item {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
+.title-admin {
+  font-size: 48px;
+  line-height: 120%;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 20px 0;
+  text-transform: capitalize;
+}

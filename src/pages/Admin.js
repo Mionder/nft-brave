@@ -20,11 +20,13 @@ import RanksConfig from '../resourses/configs/RanksConfig'
 import SelectCustom from "../components/SelectCustom";
 import ReactPlayer from "react-player";
 import Video from "../resourses/mocks/Open_army_main_final.mp4";
+import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 
 const Admin = () => {
     const [data, setData] = React.useState([emptyObjectBrigade]);
     const [chevronList, setChevronList] = React.useState([emptyObjectChevron]);
     const [order, setOrder] = React.useState(0);
+    const [isEditOrder, setIsEditOrder] = React.useState(false);
     const [brigade, setBrigade] = React.useState(emptyObjectBrigade);
     const [chevron, setChevron] = React.useState(emptyObjectChevron);
     const [isEdit, setIsEdit] = React.useState(false);
@@ -77,6 +79,24 @@ const Admin = () => {
 
             dataSetter();
             setIsEdit(false);
+            setIsEditOrder(false);
+        })();
+    }
+    const editOrder = () => {
+        
+        (async () => {
+            await fetch(`http://localhost:3000/brigades/${selectedBrigade._id}`, {
+                method: 'PUT',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ order: selectedBrigade.order })
+            });
+
+            dataSetter();
+            setIsEditOrder(false);
         })();
     }
 
@@ -138,35 +158,84 @@ const Admin = () => {
         })()
     }
 
+    const selectEditOrder = (item) => {
+        setSelectedBrigade(item)
+        setIsEditOrder(true);
+    }
+
 
 
     return (
-        <>
-
-
-            <div style={{marginBottom: 80}}>
-                <Typography titleNum='h3' color='primary'> ranks </Typography>
-                <CardList data={RanksConfig} btnTitle='Upgrade'/>
+        <div className="container">
+            <h2 className="title-admin">Edit brigades info</h2>
+            <div style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap", width: "100%"}}>
+                {data.map((item) => {
+                    return (
+                      <div className="admin-brigade__card" key={item._id} >
+                          <div style={{display: 'flex', alignItems: 'center'}}>
+                              <Image size={'img-sm'} src={item.img} alt={item.name}/>
+                              <p className="admin-title__item">{item.name}</p>
+                          </div>
+                          <div className="actions-admin">
+                              <DeleteIcon fontSize="large" onClick={() => deleteBrigadeNft(item._id)}/>
+                              <EditIcon fontSize="large" onClick={() => selectBrigade(item._id)}/>
+                              <ChangeCircleIcon fontSize="large" onClick={() => selectEditOrder(item)} />
+                              {/*<EditIcon fontSize="large" onClick={() => selectEditOrder(item)}/>*/}
+                          </div>
+                          <div className="actions-order">
+                              {item.order}
+                          </div>
+                      </div>
+                    )
+                })}
             </div>
 
-            {data.map((item) => {
-                return (
-                    <div key={item._id} style={{display: 'flex', alignItems: 'center', background: '#fff'}}>
-                        <Image size={'img-sm'} src={item.img} alt={item.name}/>
-                        <p>{item.name}</p>
-                        <DeleteIcon onClick={() => deleteBrigadeNft(item._id)}/>
-                        <EditIcon onClick={() => selectBrigade(item._id)}/>
+            <h2 className="title-admin">Edit chevrons info</h2>
+            <div style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap", width: "100%"}}>
+                {chevronList.map((item) => {
+                    return (
+                      <div className="admin-brigade__card" key={item._id}>
+                          {/*<Image size={'img-sm'} src={item.img} alt={item.name} />*/}
+                          <p className="admin-title__item">{item.name}</p>
+                          <div className="actions-admin">
+                              <DeleteIcon fontSize="large" onClick={() => deleteChevron(item._id)}/>
+                              <EditIcon fontSize="large" />
+                              <ChangeCircleIcon fontSize="large" />
+                          </div>
+                      </div>
+                    )
+                })}
+            </div>
+
+
+            <Modal
+              open={isEditOrder}
+              onClose={() => setIsEditOrder(false)}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <h1>Edit</h1>
+                    <AccordionSummary
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                        <p>Edit Brigade order</p>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        {selectedBrigade.name}
                         <TextField
-                            id="outlined-basic"
-                            value={item.order}
-                            onChange={(e) => setOrder(+e.target.value)}
-                            label="Order"
-                            variant="outlined"
-                            type="number"
+                          id="outlined-basic"
+                          value={selectedBrigade.order}
+                          onChange={(e) => setSelectedBrigade({...selectedBrigade, order: +e.target.value})}
+                          label="Order"
+                          variant="outlined"
+                          type="number"
                         />
-                    </div>
-                )
-            })}
+                        <button onClick={editOrder}>Edit</button>
+                    </AccordionDetails>
+                </Box>
+            </Modal>
 
             <Modal
               open={isEdit}
@@ -413,18 +482,7 @@ const Admin = () => {
                 </AccordionDetails>
             </Accordion>
 
-
-            {chevronList.map((item) => {
-                return (
-                    <div key={item._id} style={{display: 'flex', alignItems: 'center', background: '#fff'}}>
-                        {/*<Image size={'img-sm'} src={item.img} alt={item.name} />*/}
-                        <p>{item.name}</p>
-                        <DeleteIcon onClick={() => deleteChevron(item._id)}/>
-                    </div>
-                )
-            })}
-
-        </>
+        </div>
     )
 }
 
