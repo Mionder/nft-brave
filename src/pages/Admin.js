@@ -31,8 +31,14 @@ const Admin = () => {
     const [chevron, setChevron] = React.useState(emptyObjectChevron);
     const [isEdit, setIsEdit] = React.useState(false);
     const [selectedBrigade, setSelectedBrigade] = React.useState({});
+    const [isLoginModalShow, setIsLoginModalShow] = React.useState(true);
+    const [loginData, setLoginData] = React.useState({login: '', password: ''})
     React.useEffect(() => {
+        const isAuth = auth();
         dataSetter();
+        if (isAuth) {
+            setIsLoginModalShow(false);
+        }
     }, [])
 
     const style = {
@@ -163,6 +169,17 @@ const Admin = () => {
         setIsEditOrder(true);
     }
 
+    const auth = () => {
+        const isAuth = localStorage.getItem('AdminAuth');
+        const {login, password} = loginData;
+        if ((login === 'admin' && password === 'admin') || isAuth) {
+            setIsLoginModalShow(false);
+            localStorage.setItem('AdminAuth', true);
+            return true;
+        }
+        return false;
+    }
+
 
 
     return (
@@ -206,6 +223,43 @@ const Admin = () => {
                     )
                 })}
             </div>
+
+
+                 <Modal
+                   open={isLoginModalShow}
+                   aria-labelledby="modal-modal-title"
+                   aria-describedby="modal-modal-description"
+                 >
+                  <Box sx={style}>
+                      <h1>Login</h1>
+                      <AccordionSummary
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                      >
+                      </AccordionSummary>
+                      <AccordionDetails>
+                          {selectedBrigade.name}
+                          <TextField
+                            id="outlined-basic"
+                            value={loginData.login}
+                            onChange={(e) => setLoginData({...loginData, login: e.target.value})}
+                            label="Login"
+                            variant="outlined"
+                            type="text"
+                          />
+                          <TextField
+                            id="outlined-basic"
+                            value={loginData.password}
+                            onChange={(e) => setLoginData({...loginData, password: e.target.value})}
+                            label="Password"
+                            variant="outlined"
+                            type="text"
+                          />
+                          <button onClick={auth}>Sign In</button>
+                      </AccordionDetails>
+                  </Box>
+              </Modal>
+
 
 
             <Modal
