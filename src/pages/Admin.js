@@ -27,10 +27,13 @@ const Admin = () => {
     const [chevronList, setChevronList] = React.useState([emptyObjectChevron]);
     const [order, setOrder] = React.useState(0);
     const [isEditOrder, setIsEditOrder] = React.useState(false);
+    const [isEditOrderNft, setIsEditOrderNft] = React.useState(false);
     const [brigade, setBrigade] = React.useState(emptyObjectBrigade);
     const [chevron, setChevron] = React.useState(emptyObjectChevron);
     const [isEdit, setIsEdit] = React.useState(false);
+    const [isEditNft, setIsEditNft] = React.useState(false);
     const [selectedBrigade, setSelectedBrigade] = React.useState({});
+    const [selectedNft, setSelectedNft] = React.useState({});
     const [isLoginModalShow, setIsLoginModalShow] = React.useState(true);
     const [loginData, setLoginData] = React.useState({login: '', password: ''})
     React.useEffect(() => {
@@ -71,6 +74,17 @@ const Admin = () => {
           });
     }
 
+    const selectNft = async (id) => {
+        setIsEditNft(true);
+        await fetch(`http://localhost:3000/nft/${id}`)
+          .then((response) => {
+              return response.json();
+          })
+          .then((data) => {
+              setSelectedNft(data)
+          });
+    }
+
     const editBrigadeNft = () => {
         (async () => {
             await fetch(`http://localhost:3000/brigades/${selectedBrigade._id}`, {
@@ -105,6 +119,44 @@ const Admin = () => {
             setIsEditOrder(false);
         })();
     }
+
+    const editNft = () => {
+        (async () => {
+            await fetch(`http://localhost:3000/nft/${selectedNft._id}`, {
+                method: 'PUT',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(selectedNft)
+            });
+
+            dataSetter();
+            setIsEditNft(false);
+            setIsEditOrderNft(false);
+        })();
+    }
+
+
+    const editOrderNft = () => {
+
+        (async () => {
+            await fetch(`http://localhost:3000/nft/${selectedNft._id}`, {
+                method: 'PUT',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ order: selectedNft.order })
+            });
+
+            dataSetter();
+            setIsEditOrderNft(false);
+        })();
+    }
+
 
     const createBrigadeNft = () => {
         (async () => {
@@ -169,6 +221,11 @@ const Admin = () => {
         setIsEditOrder(true);
     }
 
+    const selectEditOrderNft = (item) => {
+        setSelectedNft(item)
+        setIsEditOrderNft(true);
+    }
+
     const auth = () => {
         const isAuth = localStorage.getItem('AdminAuth');
         const {login, password} = loginData;
@@ -216,8 +273,11 @@ const Admin = () => {
                           <p className="admin-title__item">{item.name}</p>
                           <div className="actions-admin">
                               <DeleteIcon fontSize="large" onClick={() => deleteChevron(item._id)}/>
-                              <EditIcon fontSize="large" />
-                              <ChangeCircleIcon fontSize="large" />
+                              <EditIcon fontSize="large" onClick={() => selectNft(item._id)} />
+                              <ChangeCircleIcon fontSize="large" onClick={() => selectEditOrderNft(item)} />
+                          </div>
+                          <div className="actions-order">
+                              {item.order}
                           </div>
                       </div>
                     )
@@ -384,6 +444,102 @@ const Admin = () => {
                         </AccordionDetails>
                 </Box>
             </Modal>
+
+
+
+
+            <Modal
+              open={isEditOrderNft}
+              onClose={() => setIsEditOrderNft(false)}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <h1>Edit</h1>
+                    <AccordionSummary
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                        <p>Edit Nft order</p>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        {selectedNft.name}
+                        <TextField
+                          id="outlined-basic"
+                          value={selectedNft.order}
+                          onChange={(e) => setSelectedNft({...selectedNft, order: +e.target.value})}
+                          label="Order"
+                          variant="outlined"
+                          type="number"
+                        />
+                        <button onClick={editOrderNft}>Edit</button>
+                    </AccordionDetails>
+                </Box>
+            </Modal>
+
+            <Modal
+              open={isEditNft}
+              onClose={() => setIsEditNft(false)}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <h1>Edit</h1>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon/>}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                        <p>Edit Nft</p>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <TextField
+                          id="outlined-basic"
+                          value={selectedNft.name}
+                          onChange={(e) => setSelectedNft({...selectedNft, name: e.target.value})}
+                          fullWidth
+                          margin="normal"
+                          required
+                          label="Brigade Name"
+                          variant="outlined"/>
+                        <TextField
+                          id="outlined-basic"
+                          value={selectedNft.description}
+                          onChange={(e) => setSelectedNft({...selectedNft, description: e.target.value})}
+                          margin="normal"
+                          label="Description"
+                          variant="outlined"/>
+                        <TextField
+                          id="outlined-basic"
+                          value={selectedNft.price}
+                          onChange={(e) => setSelectedNft({...selectedNft, price: e.target.value})}
+                          margin="normal"
+                          type="number"
+                          label="Price"
+                          variant="outlined"/>
+                        <TextField
+                          id="outlined-basic"
+                          value={selectedNft.editions}
+                          onChange={(e) => setSelectedNft({...selectedNft, editions: e.target.value})}
+                          margin="normal"
+                          label="Edition"
+                          type="number"
+                          variant="outlined"/>
+                        <TextField
+                          id="outlined-basic"
+                          value={selectedNft.video}
+                          onChange={(e) => setSelectedNft({...selectedNft, video: e.target.value})}
+                          margin="normal"
+                          label="Посилання на вiдео"
+                          variant="outlined"/>
+                        <button onClick={editNft}>Edit</button>
+                    </AccordionDetails>
+                </Box>
+            </Modal>
+
+
+
+
 
             <Accordion>
                 <AccordionSummary
