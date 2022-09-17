@@ -7,7 +7,7 @@ const CardList = ({data, btnTitle, className}) => {
 
     return (
         <div className={`${style['card-list']} ${className}`}>
-            {data.map((item,index) => {
+            {data.sort((item, itemNext) => item.order - itemNext.order).map((item,index) => {
                 if(index > 2) return
 
                 return (

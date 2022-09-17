@@ -29,7 +29,7 @@ const AccordionList = ({data, totalSum, className}) => {
 
     return (
         <div className={styles['accordion-container']}>
-            {data.map((item, index) => {
+            {data.sort((item, itemNext) => item.order - itemNext.order).map((item, index) => {
                 return (
                     <Accordion expanded={expanded === `accordion-${index}`} disableGutters={true} key={item['_id']} className={`${styles['accordion-item']} ${className}`} onChange={accordionCollapseHandler(`accordion-${index}`)}>
                         <AccordionSummary

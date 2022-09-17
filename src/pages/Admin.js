@@ -1,26 +1,21 @@
 import React from 'react';
 import {getBrigades, emptyObjectBrigade, getChevrons, emptyObjectChevron} from "../hooks";
 import Image from "../components/Image";
-import { Accordion, Box, InputLabel, MenuItem, Modal, Select, TextareaAutosize } from "@mui/material";
+import { Accordion, Box, InputLabel, Modal, TextareaAutosize } from "@mui/material";
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
-import CardList from "../components/CardList";
-import Typography from "../components/Typography";
-import AccordionList from "../components/AccordionList";
-import configAdminCards from '../resourses/configs/configAdminCards.js'
-import {Link} from "react-router-dom";
-import Card from "../components/Card";
-import style from "../components/CardList/CardList.module.scss";
-import styleCardAdmin from '../components/Card/Card.module.scss'
 import EditIcon from '@mui/icons-material/Edit';
-import RanksConfig from '../resourses/configs/RanksConfig'
 import SelectCustom from "../components/SelectCustom";
-import ReactPlayer from "react-player";
-import Video from "../resourses/mocks/Open_army_main_final.mp4";
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 const Admin = () => {
     const [data, setData] = React.useState([emptyObjectBrigade]);
@@ -36,6 +31,7 @@ const Admin = () => {
     const [selectedNft, setSelectedNft] = React.useState({});
     const [isLoginModalShow, setIsLoginModalShow] = React.useState(true);
     const [loginData, setLoginData] = React.useState({login: '', password: ''})
+    const [isDelete, setIsDelete] = React.useState({status: false, id: null, isBrigade: null});
     React.useEffect(() => {
         const isAuth = auth();
         dataSetter();
@@ -103,21 +99,23 @@ const Admin = () => {
         })();
     }
     const editOrder = () => {
-        
-        (async () => {
-            await fetch(`http://localhost:3000/brigades/${selectedBrigade._id}`, {
-                method: 'PUT',
-                mode: 'cors',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ order: selectedBrigade.order })
-            });
+        const isExist = data.some(item => item.order === selectedBrigade.order);
+        if (!isExist) {
+            (async () => {
+                await fetch(`http://localhost:3000/brigades/${selectedBrigade._id}`, {
+                    method: 'PUT',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ order: selectedBrigade.order })
+                });
 
-            dataSetter();
-            setIsEditOrder(false);
-        })();
+                dataSetter();
+                setIsEditOrder(false);
+            })();
+        }
     }
 
     const editNft = () => {
@@ -141,20 +139,23 @@ const Admin = () => {
 
     const editOrderNft = () => {
 
-        (async () => {
-            await fetch(`http://localhost:3000/nft/${selectedNft._id}`, {
-                method: 'PUT',
-                mode: 'cors',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ order: selectedNft.order })
-            });
+        const isExist = chevronList.some(item => item.order === selectedNft.order);
+        if (!isExist) {
+            (async () => {
+                await fetch(`http://localhost:3000/nft/${selectedNft._id}`, {
+                    method: 'PUT',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ order: selectedNft.order })
+                });
 
-            dataSetter();
-            setIsEditOrderNft(false);
-        })();
+                dataSetter();
+                setIsEditOrderNft(false);
+            })();
+        }
     }
 
 
@@ -184,6 +185,7 @@ const Admin = () => {
                 },
             });
             dataSetter();
+            setIsDelete({...isDelete, status: false, isBrigade: null})
 
         })();
     }
@@ -212,7 +214,8 @@ const Admin = () => {
                     'Content-Type': 'application/json',
                 },
             })
-            dataSetter()
+            dataSetter();
+            setIsDelete({...isDelete, status: false, isBrigade: null});
         })()
     }
 
@@ -243,7 +246,7 @@ const Admin = () => {
         <div className="container">
             <h2 className="title-admin">Edit brigades info</h2>
             <div style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap", width: "100%"}}>
-                {data.map((item) => {
+                {data.sort((item, itemNext) => item.order - itemNext.order).map((item) => {
                     return (
                       <div className="admin-brigade__card" key={item._id} >
                           <div style={{display: 'flex', alignItems: 'center'}}>
@@ -251,7 +254,7 @@ const Admin = () => {
                               <p className="admin-title__item">{item.name}</p>
                           </div>
                           <div className="actions-admin">
-                              <DeleteIcon fontSize="large" onClick={() => deleteBrigadeNft(item._id)}/>
+                              <DeleteIcon fontSize="large" onClick={() => setIsDelete({status: true, id: item._id, isBrigade: true})}/>
                               <EditIcon fontSize="large" onClick={() => selectBrigade(item._id)}/>
                               <ChangeCircleIcon fontSize="large" onClick={() => selectEditOrder(item)} />
                               {/*<EditIcon fontSize="large" onClick={() => selectEditOrder(item)}/>*/}
@@ -266,13 +269,13 @@ const Admin = () => {
 
             <h2 className="title-admin">Edit chevrons info</h2>
             <div style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap", width: "100%"}}>
-                {chevronList.map((item) => {
+                {chevronList.sort((item, itemNext) => item.order - itemNext.order).map((item) => {
                     return (
                       <div className="admin-brigade__card" key={item._id}>
                           {/*<Image size={'img-sm'} src={item.img} alt={item.name} />*/}
                           <p className="admin-title__item">{item.name}</p>
                           <div className="actions-admin">
-                              <DeleteIcon fontSize="large" onClick={() => deleteChevron(item._id)}/>
+                              <DeleteIcon fontSize="large" onClick={() => setIsDelete({status: true, id: item._id, isBrigade: false})}/>
                               <EditIcon fontSize="large" onClick={() => selectNft(item._id)} />
                               <ChangeCircleIcon fontSize="large" onClick={() => selectEditOrderNft(item)} />
                           </div>
@@ -444,6 +447,29 @@ const Admin = () => {
                         </AccordionDetails>
                 </Box>
             </Modal>
+
+
+            <Dialog
+              open={isDelete.status}
+              onClose={() => setIsDelete({ ...isDelete, status: false })}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Delete Modal
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Are you sure, that you want to Delete {isDelete.isBrigade ? 'Brigade' : 'Nft'}?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setIsDelete({...isDelete, status: false})}>Close</Button>
+                    <Button onClick={() => isDelete.isBrigade ? deleteBrigadeNft(isDelete.id) : deleteChevron(isDelete.id)} autoFocus>
+                        Delete
+                    </Button>
+                </DialogActions>
+            </Dialog>
 
 
 
