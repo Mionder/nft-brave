@@ -10,6 +10,7 @@ const SelectCustom = ({data, labelId, label, value, onChange, style}) => {
             onChange={onChange}
             style={style}
         >
+            <MenuItem defaultValue>{value}</MenuItem>
             {data.map(item => {
                 const key = item['_id'] + item.name
                 return (
