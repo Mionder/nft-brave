@@ -355,7 +355,7 @@ const Admin = () => {
                         <p>Edit Brigade order</p>
                     </AccordionSummary>
                     <AccordionDetails className={styles.create_wrapper}>
-                        {selectedBrigade.name}
+                        <div style={{marginBottom: '20px'}}>{selectedBrigade.name}</div>
                         <TextField
                           id="outlined-basic"
                           value={selectedBrigade.order}
@@ -575,7 +575,7 @@ const Admin = () => {
                         <p>Edit Nft order</p>
                     </AccordionSummary>
                     <AccordionDetails className={styles.create_wrapper}>
-                        {selectedNft.name}
+                        <div style={{marginBottom: '20px'}}>{selectedNft.name}</div>
                         <TextField
                           id="outlined-basic"
                           value={selectedNft.order}
