@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import styles from './index.module.scss';
 import login from "../../pages/Login";
 
-const ChevronPlayer = ({url, className, size}) => {
+const ChevronPlayer = ({url, className, size, style={}}) => {
 
     const playerRef = useRef(null)
     const container = useRef(null)
@@ -33,7 +33,7 @@ const ChevronPlayer = ({url, className, size}) => {
     }, []);
 
     React.useEffect(()=>{
-        console.log(windowSize)
+
         if (windowSize <= 768){
             setIsPlaying(false)
         }
@@ -70,7 +70,7 @@ const ChevronPlayer = ({url, className, size}) => {
     const progressVideo = () => {
         const duration = playerRef.current.getDuration() * 1000
 
-        console.log(duration)
+
         setTimeout(() => {
             playerRef.current.seekTo(0);
             progressVideo();
@@ -78,7 +78,7 @@ const ChevronPlayer = ({url, className, size}) => {
     }
 
     return (
-        <div ref={container} className={styles.container}>
+        <div ref={container} style={style} className={styles.container}>
             {(isLoading || isPause) &&
                 <div className={styles.loader}>
                         <div className={styles.loader__ellipsis}>

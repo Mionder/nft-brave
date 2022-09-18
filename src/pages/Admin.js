@@ -16,6 +16,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import styles from './AdminStyles.module.scss'
+import ChevronPlayer from "../components/ChevronPlayer";
 
 const Admin = () => {
     const [data, setData] = React.useState([emptyObjectBrigade]);
@@ -52,6 +54,7 @@ const Admin = () => {
         padding: '48px 140px 48px 84px',
         borderRadius: 20,
         border: '2px solid #000',
+        overflow: 'auto',
     };
 
     const dataSetter = async () => {
@@ -271,8 +274,18 @@ const Admin = () => {
             <div style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap", width: "100%"}}>
                 {chevronList.sort((item, itemNext) => item.order - itemNext.order).map((item) => {
                     return (
-                      <div className="admin-brigade__card" key={item._id}>
+                      <div className="admin-brigade__card" key={item['_id']}>
                           {/*<Image size={'img-sm'} src={item.img} alt={item.name} />*/}
+                          <ChevronPlayer
+                              className={styles.chevron_video}
+                              style={{
+                                  borderRadius: 12,
+                                  overflow: 'hidden',
+                                  width: '72px',
+                                  justifyContent: 'flex-start',
+                                  marginBottom: 10}}
+                              size={'video-sm'}
+                              url={item.video} />
                           <p className="admin-title__item">{item.name}</p>
                           <div className="actions-admin">
                               <DeleteIcon fontSize="large" onClick={() => setIsDelete({status: true, id: item._id, isBrigade: false})}/>
@@ -300,7 +313,7 @@ const Admin = () => {
                         id="panel1a-header"
                       >
                       </AccordionSummary>
-                      <AccordionDetails>
+                      <AccordionDetails className={styles.modal_wrapper}>
                           {selectedBrigade.name}
                           <TextField
                             id="outlined-basic"
@@ -309,6 +322,7 @@ const Admin = () => {
                             label="Login"
                             variant="outlined"
                             type="text"
+                            className={styles.modal_field}
                           />
                           <TextField
                             id="outlined-basic"
@@ -317,8 +331,9 @@ const Admin = () => {
                             label="Password"
                             variant="outlined"
                             type="text"
+                            className={styles.modal_field}
                           />
-                          <button onClick={auth}>Sign In</button>
+                          <button className={styles.modal_button} onClick={auth}>Sign In</button>
                       </AccordionDetails>
                   </Box>
               </Modal>
@@ -331,7 +346,7 @@ const Admin = () => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} className={styles.modal}>
                     <h1>Edit</h1>
                     <AccordionSummary
                       aria-controls="panel1a-content"
@@ -339,7 +354,7 @@ const Admin = () => {
                     >
                         <p>Edit Brigade order</p>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails className={styles.create_wrapper}>
                         {selectedBrigade.name}
                         <TextField
                           id="outlined-basic"
@@ -348,8 +363,9 @@ const Admin = () => {
                           label="Order"
                           variant="outlined"
                           type="number"
+                          className={styles.field_full}
                         />
-                        <button onClick={editOrder}>Edit</button>
+                        <button className={styles.modal_button} onClick={editOrder}>Edit</button>
                     </AccordionDetails>
                 </Box>
             </Modal>
@@ -360,7 +376,7 @@ const Admin = () => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} className={styles.modal}>
                     <h1>Edit</h1>
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon/>}
@@ -369,7 +385,7 @@ const Admin = () => {
                         >
                             <p>Edit Brigade</p>
                         </AccordionSummary>
-                        <AccordionDetails>
+                        <AccordionDetails className={styles.create_wrapper}>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.name}
@@ -378,7 +394,8 @@ const Admin = () => {
                               margin="normal"
                               required
                               label="Brigade Name"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_full}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.year}
@@ -386,64 +403,133 @@ const Admin = () => {
                               margin="normal"
                               type="number"
                               label="Рік формування"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.kindOfTroops}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, kindOfTroops: e.target.value})}
                               margin="normal"
                               label="Вид військ"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.typeOfTroops}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, typeOfTroops: e.target.value})}
                               margin="normal"
                               label="Тип військ"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.awards}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, awards: e.target.value})}
                               margin="normal"
                               label="Нагороди"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.motto}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, motto: e.target.value})}
                               margin="normal"
                               label="Гасло"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.trophies}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, trophies: e.target.value})}
                               margin="normal"
                               label="Трофеї"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.protector}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, protector: e.target.value})}
                               margin="normal"
                               label="Оборонець"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.pet}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, pet: e.target.value})}
                               margin="normal"
                               label="Бойовий улюбленець"
-                              variant="outlined"/>
+                              variant="outlined"
+                              className={styles.field_third}/>
                             <TextField
                               id="outlined-basic"
                               value={selectedBrigade.videoLink}
                               onChange={(e) => setSelectedBrigade({...selectedBrigade, videoLink: e.target.value})}
                               margin="normal"
                               label="Посилання на вiдео"
-                              variant="outlined"/>
-                            <button onClick={editBrigadeNft}>Edit</button>
+                              variant="outlined"
+                              className={styles.field_third}/>
+                            <TextField
+                                id="outlined-basic"
+                                value={selectedBrigade.img}
+                                onChange={(e) => setSelectedBrigade({...selectedBrigade, img: e.target.value})}
+                                margin="normal"
+                                label="Фото бригади (base64)"
+                                variant="outlined"
+                                className={styles.field_third}/>
+                            <TextField
+                                id="outlined-basic"
+                                value={selectedBrigade.order}
+                                onChange={(e) => setSelectedBrigade({...selectedBrigade, order: +e.target.value})}
+                                label="Порядок"
+                                variant="outlined"
+                                margin="normal"
+                                type="number"
+                                className={styles.field_third}
+                            />
+                            <TextField
+                                id="outlined-basic"
+                                value={selectedBrigade.affiliation}
+                                onChange={(e) => setSelectedBrigade({...selectedBrigade, affiliation: e.target.value})}
+                                margin="normal"
+                                label="Приналежність"
+                                variant="outlined"
+                                className={styles.field_third}/>
+
+                            <InputLabel className={styles.field_full} id="textarea-brigade-description">{`Опис до бригади`}</InputLabel>
+                            <TextareaAutosize
+                                id="textarea-brigade-description"
+                                value={selectedBrigade.description}
+                                onChange={(e) => setSelectedBrigade({...selectedBrigade, description: e.target.value})}
+                                aria-label="опис"
+                                minRows={3}
+                                className={styles.field_textarea}
+                            />
+                            <TextField
+                                id="outlined-basic"
+                                value={selectedBrigade.facebook}
+                                onChange={(e) => setSelectedBrigade({...selectedBrigade, facebook: e.target.value})}
+                                margin="normal"
+                                label="Facebook"
+                                variant="outlined"
+                                className={styles.field_third}/>
+                            <TextField
+                                id="outlined-basic"
+                                value={selectedBrigade.instagram}
+                                onChange={(e) => setSelectedBrigade({...selectedBrigade, instagram: e.target.value})}
+                                margin="normal"
+                                label="Instagram"
+                                variant="outlined"
+                                className={styles.field_third}/>
+                            <TextField
+                                id="outlined-basic"
+                                value={selectedBrigade.youtube}
+                                onChange={(e) => setSelectedBrigade({...selectedBrigade, youtube: e.target.value})}
+                                margin="normal"
+                                label="YouTube"
+                                variant="outlined"
+                                className={styles.field_third}/>
+                            <button className={styles.modal_button} onClick={editBrigadeNft}>Edit</button>
                         </AccordionDetails>
                 </Box>
             </Modal>
@@ -464,8 +550,8 @@ const Admin = () => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setIsDelete({...isDelete, status: false})}>Close</Button>
-                    <Button onClick={() => isDelete.isBrigade ? deleteBrigadeNft(isDelete.id) : deleteChevron(isDelete.id)} autoFocus>
+                    <Button className={styles.modal_button} onClick={() => setIsDelete({...isDelete, status: false})}>Close</Button>
+                    <Button className={styles.modal_button} onClick={() => isDelete.isBrigade ? deleteBrigadeNft(isDelete.id) : deleteChevron(isDelete.id)} autoFocus>
                         Delete
                     </Button>
                 </DialogActions>
@@ -480,7 +566,7 @@ const Admin = () => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} className={styles.modal}>
                     <h1>Edit</h1>
                     <AccordionSummary
                       aria-controls="panel1a-content"
@@ -488,7 +574,7 @@ const Admin = () => {
                     >
                         <p>Edit Nft order</p>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails className={styles.create_wrapper}>
                         {selectedNft.name}
                         <TextField
                           id="outlined-basic"
@@ -497,8 +583,9 @@ const Admin = () => {
                           label="Order"
                           variant="outlined"
                           type="number"
+                          className={styles.field_full}
                         />
-                        <button onClick={editOrderNft}>Edit</button>
+                        <button className={styles.modal_button} onClick={editOrderNft}>Edit</button>
                     </AccordionDetails>
                 </Box>
             </Modal>
@@ -509,7 +596,7 @@ const Admin = () => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} className={styles.modal}>
                     <h1>Edit</h1>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon/>}
@@ -518,7 +605,7 @@ const Admin = () => {
                     >
                         <p>Edit Nft</p>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails className={styles.create_wrapper}>
                         <TextField
                           id="outlined-basic"
                           value={selectedNft.name}
@@ -527,14 +614,18 @@ const Admin = () => {
                           margin="normal"
                           required
                           label="Brigade Name"
-                          variant="outlined"/>
-                        <TextField
-                          id="outlined-basic"
-                          value={selectedNft.description}
-                          onChange={(e) => setSelectedNft({...selectedNft, description: e.target.value})}
-                          margin="normal"
-                          label="Description"
-                          variant="outlined"/>
+                          variant="outlined"
+                          className={styles.field_full}/>
+
+                        <InputLabel className={styles.field_full} id="textarea-chevron-description-edit">{`Description`}</InputLabel>
+                        <TextareaAutosize
+                            id="textarea-chevron-description-edit"
+                            value={selectedNft.description}
+                            onChange={(e) => setSelectedNft({...selectedNft, description: e.target.value})}
+                            aria-label="опис"
+                            minRows={3}
+                            className={styles.field_textarea}
+                        />
                         <TextField
                           id="outlined-basic"
                           value={selectedNft.price}
@@ -542,7 +633,8 @@ const Admin = () => {
                           margin="normal"
                           type="number"
                           label="Price"
-                          variant="outlined"/>
+                          variant="outlined"
+                          className={styles.field_third}/>
                         <TextField
                           id="outlined-basic"
                           value={selectedNft.editions}
@@ -550,15 +642,28 @@ const Admin = () => {
                           margin="normal"
                           label="Edition"
                           type="number"
-                          variant="outlined"/>
+                          variant="outlined"
+                          className={styles.field_third}/>
                         <TextField
                           id="outlined-basic"
                           value={selectedNft.video}
                           onChange={(e) => setSelectedNft({...selectedNft, video: e.target.value})}
                           margin="normal"
                           label="Посилання на вiдео"
-                          variant="outlined"/>
-                        <button onClick={editNft}>Edit</button>
+                          variant="outlined"
+                          className={styles.field_third}/>
+
+                        <InputLabel className={styles.field_full} id="select-connected-brigade-edit">{`пов'язана бригада`}</InputLabel>
+                        <SelectCustom
+                            style={{width: '100%'}}
+                            labelId='select-connected-brigade-edit'
+                            label='пов\`язана бригада'
+                            value={selectedNft.brigadeId}
+                            onChange={(e) => setSelectedNft({...selectedNft, brigadeId: e.target.value})}
+                            data={data}
+                            className={styles.field_full}
+                        />
+                        <button className={styles.modal_button} onClick={editNft}>Edit</button>
                     </AccordionDetails>
                 </Box>
             </Modal>
@@ -567,15 +672,16 @@ const Admin = () => {
 
 
 
-            <Accordion>
+            <Accordion className={styles.create_container}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon/>}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={styles.create_title}
                 >
                     <p>Create new Brigade</p>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails className={styles.create_wrapper}>
                     <TextField
                         id="outlined-basic"
                         value={brigade.name}
@@ -584,7 +690,8 @@ const Admin = () => {
                         margin="normal"
                         required
                         label="Brigade Name"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_full}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.year}
@@ -592,76 +699,146 @@ const Admin = () => {
                         margin="normal"
                         type="number"
                         label="Рік формування"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.kindOfTroops}
                         onChange={(e) => setBrigade({...brigade, kindOfTroops: e.target.value})}
                         margin="normal"
                         label="Вид військ"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.typeOfTroops}
                         onChange={(e) => setBrigade({...brigade, typeOfTroops: e.target.value})}
                         margin="normal"
                         label="Тип військ"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.awards}
                         onChange={(e) => setBrigade({...brigade, awards: e.target.value})}
                         margin="normal"
                         label="Нагороди"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.motto}
                         onChange={(e) => setBrigade({...brigade, motto: e.target.value})}
                         margin="normal"
                         label="Гасло"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.trophies}
                         onChange={(e) => setBrigade({...brigade, trophies: e.target.value})}
                         margin="normal"
                         label="Трофеї"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.protector}
                         onChange={(e) => setBrigade({...brigade, protector: e.target.value})}
                         margin="normal"
                         label="Оборонець"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.pet}
                         onChange={(e) => setBrigade({...brigade, pet: e.target.value})}
                         margin="normal"
                         label="Бойовий улюбленець"
-                        variant="outlined"/>
+                        variant="outlined"
+                        className={styles.field_third}/>
                     <TextField
                         id="outlined-basic"
                         value={brigade.videoLink}
                         onChange={(e) => setBrigade({...brigade, videoLink: e.target.value})}
                         margin="normal"
                         label="Посилання на вiдео"
-                        variant="outlined"/>
-                    <button onClick={createBrigadeNft}>Створити</button>
+                        variant="outlined"
+                        className={styles.field_third}/>
+                    <TextField
+                        id="outlined-basic"
+                        value={brigade.img}
+                        onChange={(e) => setBrigade({...brigade, img: e.target.value})}
+                        margin="normal"
+                        label="Фото бригади (base64)"
+                        variant="outlined"
+                        className={styles.field_third}/>
+                    <TextField
+                        id="outlined-basic"
+                        value={brigade.order}
+                        onChange={(e) => setBrigade({...brigade, order: +e.target.value})}
+                        label="Порядок"
+                        variant="outlined"
+                        margin="normal"
+                        type="number"
+                        className={styles.field_third}
+                    />
+                    <TextField
+                        id="outlined-basic"
+                        value={brigade.affiliation}
+                        onChange={(e) => setBrigade({...brigade, affiliation: e.target.value})}
+                        margin="normal"
+                        label="Приналежність"
+                        variant="outlined"
+                        className={styles.field_third}/>
+
+                    <InputLabel className={styles.field_full} id="textarea-brigade-description">{`Опис до бригади`}</InputLabel>
+                    <TextareaAutosize
+                        id="textarea-brigade-description"
+                        value={brigade.description}
+                        onChange={(e) => setBrigade({...brigade, description: e.target.value})}
+                        aria-label="опис"
+                        minRows={3}
+                        className={styles.field_textarea}
+                    />
+                    <TextField
+                        id="outlined-basic"
+                        value={brigade.facebook}
+                        onChange={(e) => setBrigade({...brigade, facebook: e.target.value})}
+                        margin="normal"
+                        label="Facebook"
+                        variant="outlined"
+                        className={styles.field_third}/>
+                    <TextField
+                        id="outlined-basic"
+                        value={brigade.instagram}
+                        onChange={(e) => setBrigade({...brigade, instagram: e.target.value})}
+                        margin="normal"
+                        label="Instagram"
+                        variant="outlined"
+                        className={styles.field_third}/>
+                    <TextField
+                        id="outlined-basic"
+                        value={brigade.youtube}
+                        onChange={(e) => setBrigade({...brigade, youtube: e.target.value})}
+                        margin="normal"
+                        label="YouTube"
+                        variant="outlined"
+                        className={styles.field_third}/>
+                    <Button className={styles.button_submit} onClick={createBrigadeNft}>Створити</Button>
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion>
+            <Accordion className={styles.create_container}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon/>}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
+                    className={styles.create_title}
                 >
                     <p>Create new Chevron</p>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails className={styles.create_wrapper}>
                     <TextField
                         id="outlined-basic"
                         value={chevron.name}
@@ -669,6 +846,7 @@ const Admin = () => {
                         label="Назва шеврону"
                         variant="outlined"
                         margin="normal"
+                        className={styles.field_full}
                     />
                     <TextField
                         id="outlined-basic"
@@ -678,6 +856,7 @@ const Admin = () => {
                         variant="outlined"
                         margin="normal"
                         type="number"
+                        className={styles.field_third}
                     />
                     <TextField
                         id="outlined-basic"
@@ -687,6 +866,7 @@ const Admin = () => {
                         variant="outlined"
                         margin="normal"
                         type="number"
+                        className={styles.field_third}
                     />
                     <TextField
                         id="outlined-basic"
@@ -695,26 +875,30 @@ const Admin = () => {
                         label="Відео посилання"
                         variant="outlined"
                         margin="normal"
+                        className={styles.field_third}
                     />
+                    <InputLabel className={styles.field_full} id="textarea-chevron-description">{`Опис до шеврону`}</InputLabel>
                     <TextareaAutosize
-                        id="outlined-basic"
+                        id="textarea-chevron-description"
                         value={chevron.description}
                         onChange={(e) => setChevron({...chevron, description: e.target.value})}
                         aria-label="опис"
                         minRows={3}
+                        className={styles.field_textarea}
                     />
 
-                    <InputLabel id="select-connected-brigade">{`пов'язана бригада`}</InputLabel>
+                    <InputLabel className={styles.field_full} id="select-connected-brigade">{`пов'язана бригада`}</InputLabel>
                     <SelectCustom
-                        style={{width: 300}}
+                        style={{width: '100%'}}
                         labelId='select-connected-brigade'
-                        label='повязана бригада'
+                        label='пов\`язана бригада'
                         value={chevron.brigadeId}
                         onChange={(e) => setChevron({...chevron, brigadeId: e.target.value})}
                         data={data}
+                        className={styles.field_full}
                     />
 
-                    <button onClick={createChevron}>Створити</button>
+                    <Button className={styles.button_submit} onClick={createChevron}>Створити</Button>
                 </AccordionDetails>
             </Accordion>
 

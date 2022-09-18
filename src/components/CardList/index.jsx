@@ -3,7 +3,7 @@ import style from './CardList.module.scss'
 import Card from "../Card";
 
 
-const CardList = ({data, btnTitle, className}) => {
+const CardList = ({data, btnTitle, className, contentType = 'img'}) => {
 
     return (
         <div className={`${style['card-list']} ${className}`}>
@@ -11,12 +11,12 @@ const CardList = ({data, btnTitle, className}) => {
                 if(index > 2) return
 
                 return (
+
                     <Card
                         key={Math.random()}
-
-                        contentType='video'
+                        contentType={contentType}
                         className={style['card-list-item']}
-                        src={item.video}
+                        src={contentType === 'img' ? item.img : item.video}
                         title={item.name}
                         btnTitle={btnTitle}
                     />

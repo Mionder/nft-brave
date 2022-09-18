@@ -33,6 +33,12 @@ const emptyObjectBrigade = {
   pet: '',
   videoLink: '',
   img: '',
+  order: 1,
+  affiliation: '',
+  description: '',
+  facebook: '',
+  instagram: '',
+  youtube: '',
 }
 const emptyObjectChevron = {
   id: Math.random(),
