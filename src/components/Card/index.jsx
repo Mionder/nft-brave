@@ -6,7 +6,7 @@ import Button from "../Button";
 import ReactPlayer from "react-player";
 import ChevronPlayer from "../ChevronPlayer";
 
-const Card = ({className, src, title, contentType = 'img', btnTitle = 'Buy'}) => {
+const Card = ({className, src, title, contentType, btnTitle = 'Buy'}) => {
     return (
         <div className={`${className} ${styles.card}`}>
             {contentType === 'img' &&

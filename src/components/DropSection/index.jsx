@@ -11,7 +11,7 @@ const DropSection = ({data}) => {
             <div className='container'>
                 <div className={styles['drop-section__wrapper']}>
                     <Typography className={styles['drop-section__title']} titleNum='h3' color='primary'> <span>1</span> DROP </Typography>
-                    <CardList data={data} className={styles['drop-section__list']}/>
+                    <CardList contentType='video' data={data} className={styles['drop-section__list']}/>
                 </div>
             </div>
         </section>
