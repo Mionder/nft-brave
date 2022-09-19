@@ -45,7 +45,7 @@ const AccordionList = ({data, totalSum, className}) => {
                                 </div>
                                 <div className={styles['accordion-summary_group-details']}>
                                     <span className={styles['accordion-signature']}>Total earned:</span>
-                                    <span className={styles['accordion-collected']}>{`$ ${totalSum}`}</span>
+                                    <span className={styles['accordion-collected']}>{`$${totalSum}`}</span>
                                 </div>
                             </div>
                         </AccordionSummary>
@@ -53,7 +53,7 @@ const AccordionList = ({data, totalSum, className}) => {
                             <div className={styles['accordion-detail-content']}>
                                 <div className={styles['accordion-detail-video']}>
                                     <ReactPlayer
-                                        url="https://www.youtube.com/embed/MfO4FOSCX-k?rel=0&showinfo=0"
+                                        url={item.videoLink ? item.videoLink : 'https://youtu.be/BCetTpkYi4c'}
                                         onPlay={() => onPlayHandler(`accordion-${index}`)}
                                         playing={playVideo[`accordion-${index}`]}
                                         light={true}
