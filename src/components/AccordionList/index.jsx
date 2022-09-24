@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./AccordionList.module.scss";
 import Image from "../Image";
-import {Accordion, AccordionDetails, Typography} from "@mui/material";
+import {Accordion, AccordionDetails} from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ReactPlayer from "react-player";
@@ -16,7 +16,6 @@ const AccordionList = ({data, totalSum, className}) => {
     }
 
     const accordionCollapseHandler = (panel) => (event, newExpanded) => {
-        //console.log(expanded)
         playingHandler({[panel]: false})
         setExpanded(newExpanded ? panel : false)
 

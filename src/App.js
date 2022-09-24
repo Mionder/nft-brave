@@ -4,7 +4,6 @@ import './resourses/styles/style.scss'
 import React from "react";
 import Home from './pages/Home';
 import Admin from './pages/Admin';
-import Login from "./pages/Login";
 import Header from "./components/Header";
 import Success from "./pages/Success";
 import SuccessRedirect from "./pages/SuccessRedirect";

@@ -22,7 +22,6 @@ import ChevronPlayer from "../components/ChevronPlayer";
 const Admin = () => {
     const [data, setData] = React.useState([emptyObjectBrigade]);
     const [chevronList, setChevronList] = React.useState([emptyObjectChevron]);
-    const [order, setOrder] = React.useState(0);
     const [isEditOrder, setIsEditOrder] = React.useState(false);
     const [isEditOrderNft, setIsEditOrderNft] = React.useState(false);
     const [brigade, setBrigade] = React.useState(emptyObjectBrigade);
@@ -260,7 +259,6 @@ const Admin = () => {
                               <DeleteIcon fontSize="large" onClick={() => setIsDelete({status: true, id: item._id, isBrigade: true})}/>
                               <EditIcon fontSize="large" onClick={() => selectBrigade(item._id)}/>
                               <ChangeCircleIcon fontSize="large" onClick={() => selectEditOrder(item)} />
-                              {/*<EditIcon fontSize="large" onClick={() => selectEditOrder(item)}/>*/}
                           </div>
                           <div className="actions-order">
                               {item.order}
@@ -275,7 +273,6 @@ const Admin = () => {
                 {chevronList.sort((item, itemNext) => item.order - itemNext.order).map((item) => {
                     return (
                       <div className="admin-brigade__card" key={item['_id']}>
-                          {/*<Image size={'img-sm'} src={item.img} alt={item.name} />*/}
                           <ChevronPlayer
                               className={styles.chevron_video}
                               style={{

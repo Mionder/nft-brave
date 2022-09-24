@@ -60,7 +60,6 @@ const Header = () => {
         body:  JSON.stringify({email: myEmail, token: localToken})
       })
         .then(async (res) =>{
-          console.log(res);
           await addUser();
         })
         .catch((err) => { console.log(err) })

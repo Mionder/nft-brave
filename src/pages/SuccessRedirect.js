@@ -19,16 +19,12 @@ const SuccessRedirect = () => {
 
   const checkToken = async (data) => {
     const token = window.location.href.slice(-22);
-    // console.log(token, 'tse');
-    // console.log("90ar4lr82a7bjug90qd08h".length);
     isToken = data.some(item => item.token === token);
-    // console.log(res);
   }
 
   React.useEffect(() => {
     checkRedirect();
     setTimeout(() => {
-      console.log(isToken, 'tok');
       if(isToken) {
         return navigate("/success");
       } else {

@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 import ReactPlayer from "react-player";
 import styles from './index.module.scss';
-import login from "../../pages/Login";
 
 const ChevronPlayer = ({url, className, size, style={}}) => {
 
@@ -13,7 +12,7 @@ const ChevronPlayer = ({url, className, size, style={}}) => {
     const [isPlaying, setIsPlaying] = useState(true)
 
     const getWindowSize = () => {
-        const {innerWidth, innerHeight} = window;
+        const { innerWidth } = window;
         return innerWidth;
     }
 
@@ -41,7 +40,7 @@ const ChevronPlayer = ({url, className, size, style={}}) => {
 
     React.useEffect(()=>{
         if(windowSize <= 768){
-            let callback = function(entries, observer) {
+            let callback = function(entries) {
                 if(!entries[0].isIntersecting){
                     setIsPlaying(false)
                     setIsPause(true)
@@ -56,10 +55,6 @@ const ChevronPlayer = ({url, className, size, style={}}) => {
 
     }, [])
 
-    // const playableHandler = () => {
-    //     playerRef.current.seekTo(0)
-    //
-    // }
     const onBufferEndHandler = () => {
 
         setTimeout(() => {
@@ -97,12 +92,8 @@ const ChevronPlayer = ({url, className, size, style={}}) => {
                 url={url}
                 playing={isPlaying}
                 muted
-                //loop
-                // onProgress={(state) => console.log(state)}
                 controls={false}
-                // onEnded = {playableHandler}
                 onStart={progressVideo}
-                // onSeek={(seconds) => playableHandler}
                 onBufferEnd={onBufferEndHandler}
             />
         </div>

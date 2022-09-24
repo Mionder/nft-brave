@@ -1,5 +1,4 @@
 import React from 'react';
-import styleVars from '../../resourses/styles/style.scss'
 import stylesTypography from './Typography.module.scss'
 
 
