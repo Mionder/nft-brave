@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/login/:token" element={<SuccessRedirect />} exact/>
         <Route path="/success" element={<Success />} exact/>
         <Route path="/404" element={<Error404 />} exact/>
+        <Route path='*' element={<Error404 />} />
       </Routes>
 
       <Footer/>
